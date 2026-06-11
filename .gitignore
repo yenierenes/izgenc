@@ -1,0 +1,14 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archives & binary design sources (siteye dahil değil, büyük)
+*.zip
+*.ai
+
+# Node (varsa)
+node_modules/
+
+# Local backups
+izgenc-backup-*/

@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>İzgenç Yapı — Tasarım Önizleme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,0..100&family=Inter:wght@400;450;500;600&family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:wght@400;500&family=EB+Garamond:wght@400;500&family=DM+Sans:wght@400;500&family=Manrope:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #1a1816;
+      --bg-2: #221f1c;
+      --panel: #2a2622;
+      --ink: #f3efe7;
+      --ink-2: #c5beb2;
+      --muted: #837b6f;
+      --accent: #B46A3C;
+      --rule: #3a3531;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    /* ============ TOPBAR ============ */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; height: 60px;
+      background: rgba(26,24,22,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px;
+      z-index: 100;
+    }
+    .tb-left { display: flex; align-items: center; gap: 28px; }
+    .tb-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .tb-brand b { color: var(--accent); font-weight: 500; }
+    .tb-brand .sub { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; margin-left: 6px; }
+
+    .tb-pages {
+      display: flex; gap: 2px; background: var(--bg-2); border: 1px solid var(--rule); border-radius: 999px; padding: 3px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: calc(100vw - 460px);
+    }
+    .tb-pages::-webkit-scrollbar { display: none; }
+    .tb-pages button {
+      background: transparent; border: 0; color: var(--ink-2); padding: 6px 12px;
+      font-size: 11.5px; border-radius: 999px;
+      transition: background 160ms, color 160ms;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .tb-pages button.active { background: var(--accent); color: #FFFDF8; }
+    .tb-pages button:hover:not(.active) { background: var(--panel); color: var(--ink); }
+
+    .tb-right { display: flex; align-items: center; gap: 12px; }
+    .tb-iconbtn {
+      background: var(--bg-2); border: 1px solid var(--rule); color: var(--ink-2);
+      padding: 7px 14px; border-radius: 999px; font-size: 12px;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: background 160ms, color 160ms;
+    }
+    .tb-iconbtn:hover { background: var(--panel); color: var(--ink); }
+    .tb-iconbtn.on { background: var(--accent); color: #FFFDF8; border-color: var(--accent); }
+
+    /* ============ STAGE ============ */
+    .stage {
+      padding-top: 60px;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 36px;
+      padding: 90px 36px 60px;
+    }
+    .stage.with-tweaks { padding-right: 360px; }
+
+    /* Desktop frame */
+    .frame-desktop {
+      flex: 1;
+      max-width: 1440px;
+      min-width: 0;
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .frame-chrome {
+      height: 38px;
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--rule);
+      display: flex; align-items: center;
+      padding: 0 16px;
+      gap: 8px;
+    }
+    .frame-chrome .dot {
+      width: 11px; height: 11px; border-radius: 999px; background: var(--rule);
+    }
+    .frame-chrome .dot:nth-child(1) { background: #E0625A; }
+    .frame-chrome .dot:nth-child(2) { background: #E5B042; }
+    .frame-chrome .dot:nth-child(3) { background: #5DBE5A; }
+    .frame-chrome .url {
+      flex: 1;
+      background: var(--bg);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin: 0 12px;
+      text-align: center;
+      letter-spacing: 0.02em;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .frame-chrome .url b { color: var(--ink-2); font-weight: 400; }
+    .frame-chrome .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .iframe-desktop {
+      width: 100%;
+      height: calc(100vh - 60px - 90px - 60px - 38px);
+      min-height: 720px;
+      border: 0;
+      display: block;
+      background: #F3EFE7;
+    }
+
+    /* Mobile frame */
+    .frame-mobile {
+      width: 390px;
+      flex-shrink: 0;
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      border-radius: 44px;
+      padding: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .frame-mobile .notch {
+      width: 110px;
+      height: 28px;
+      background: #000;
+      border-radius: 18px;
+      margin: 0 auto 12px;
+    }
+    .iframe-mobile {
+      width: 100%;
+      height: calc(100vh - 60px - 90px - 60px - 28px - 12px - 14px);
+      min-height: 720px;
+      border: 0;
+      border-radius: 30px;
+      display: block;
+      background: #F3EFE7;
+    }
+    .frame-mobile-label {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 18px;
+    }
+
+    /* ============ TWEAKS PANEL ============ */
+    .tweaks {
+      position: fixed;
+      top: 60px; right: 0;
+      width: 340px;
+      height: calc(100vh - 60px);
+      background: var(--bg-2);
+      border-left: 1px solid var(--rule);
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 320ms cubic-bezier(.2,.7,.2,1);
+      z-index: 80;
+    }
+    .tweaks.open { transform: translateX(0); }
+    .tweaks-head {
+      padding: 22px 24px 16px;
+      border-bottom: 1px solid var(--rule);
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; background: var(--bg-2); z-index: 2;
+    }
+    .tweaks-head h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      margin: 0;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .tweaks-head .close {
+      background: transparent; border: 1px solid var(--rule); color: var(--ink-2);
+      width: 28px; height: 28px; border-radius: 999px;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .tweaks-body { padding: 20px 24px 60px; }
+
+    .tw-section { margin-bottom: 28px; }
+    .tw-section + .tw-section { padding-top: 28px; border-top: 1px solid var(--rule); }
+    .tw-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .tw-title {
+      font-size: 13px;
+      color: var(--ink-2);
+      margin-bottom: 10px;
+    }
+    .tw-radio { display: grid; gap: 6px; }
+    .tw-radio button {
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--ink-2);
+      padding: 10px 12px;
+      border-radius: 6px;
+      text-align: left;
+      font-size: 12px;
+      transition: background 160ms, border-color 160ms, color 160ms;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .tw-radio button.active {
+      background: var(--accent);
+      color: #FFFDF8;
+      border-color: var(--accent);
+    }
+    .tw-radio button:hover:not(.active) { background: var(--panel); color: var(--ink); }
+    .tw-radio button .sub { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.08em; opacity: 0.7; text-transform: uppercase; }
+
+    .tw-swatches { display: flex; gap: 8px; }
+    .tw-swatch {
+      flex: 1;
+      aspect-ratio: 1;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 180ms, border-color 180ms;
+      display: flex; align-items: flex-end; padding: 6px;
+      font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    }
+    .tw-swatch.active { border-color: var(--ink); transform: scale(1.04); }
+
+    .tw-slider {
+      width: 100%;
+      accent-color: var(--accent);
+      margin-top: 4px;
+    }
+    .tw-slider-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink);
+      float: right;
+    }
+
+    .tw-reset {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--ink-2);
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      transition: background 160ms;
+    }
+    .tw-reset:hover { background: var(--panel); color: var(--ink); }
+
+    /* ============ Loader ============ */
+    .loader {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(243, 239, 231, 0.9);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #6E6A60;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      z-index: 2;
+      transition: opacity 200ms;
+    }
+    .loader.hidden { opacity: 0; pointer-events: none; }
+
+    @media (max-width: 1280px) {
+      .stage { gap: 24px; padding: 80px 16px 40px; }
+      .frame-mobile { width: 340px; }
+    }
+    @media (max-width: 1100px) {
+      .stage { flex-direction: column; align-items: center; }
+      .frame-desktop { max-width: 100%; }
+      .iframe-desktop { height: 720px; }
+    }
+    @media (max-width: 760px) {
+      .tb-pages { display: none; }
+      .topbar { padding: 0 12px; }
+      .frame-desktop { display: none; }
+      .stage { padding: 80px 12px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOPBAR ============ -->
+  <header class="topbar">
+    <div class="tb-left">
+      <div class="tb-brand">
+        İzgenç <b>Yapı</b>
+        <span class="sub">Tasarım Önizleme</span>
+      </div>
+      <div class="tb-pages" id="page-tabs">
+        <button class="active" data-page="pages/anasayfa.html">Ana Sayfa</button>
+        <button data-page="pages/hakkimizda.html">Hakkımızda</button>
+        <button data-page="pages/hizmetler.html">Hizmetler</button>
+        <button data-page="pages/hizmetler-kat-karsiligi.html">Kat Karşılığı</button>
+        <button data-page="pages/hizmetler-kentsel-donusum.html">Kentsel Dönüşüm</button>
+        <button data-page="pages/hizmetler-mimari.html">Mimari</button>
+        <button data-page="pages/projeler.html">Projeler</button>
+        <button data-page="pages/grand-corner.html">Proje Detay</button>
+        <button data-page="pages/haberler.html">Haberler</button>
+        <button data-page="pages/kariyer.html">Kariyer</button>
+        <button data-page="pages/iletisim.html">İletişim</button>
+        <button data-page="pages/hukuki.html">Hukuki</button>
+        <button data-page="pages/tesekkurler.html">Teşekkürler</button>
+        <button data-page="pages/404.html">404</button>
+      </div>
+    </div>
+    <div class="tb-right">
+      <button class="tb-iconbtn" id="reload-btn" title="Yenile">↻ Yenile</button>
+      <button class="tb-iconbtn" id="tweaks-btn">⚙ Tweaks</button>
+    </div>
+  </header>
+
+  <!-- ============ STAGE ============ -->
+  <main class="stage" id="stage">
+    <section class="frame-desktop" aria-label="Masaüstü görünüm">
+      <div class="frame-chrome">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="url"><b id="url-text">izgenc.com</b> / <span id="url-page">anasayfa</span></div>
+        <div class="label">DESKTOP · 1440</div>
+      </div>
+      <div style="position: relative;">
+        <iframe class="iframe-desktop" id="desktop-frame" src="pages/anasayfa.html" title="Desktop preview"></iframe>
+      </div>
+    </section>
+
+    <section class="frame-mobile" aria-label="Mobil görünüm">
+      <div class="notch"></div>
+      <div style="position: relative;">
+        <iframe class="iframe-mobile" id="mobile-frame" src="pages/anasayfa.html" title="Mobile preview"></iframe>
+      </div>
+      <div class="frame-mobile-label">MOBILE · 390</div>
+    </section>
+  </main>
+
+  <!-- ============ TWEAKS PANEL ============ -->
+  <aside class="tweaks" id="tweaks-panel" aria-label="Tweaks paneli">
+    <div class="tweaks-head">
+      <h3>Tweaks</h3>
+      <button class="close" id="tweaks-close" aria-label="Kapat">×</button>
+    </div>
+    <div class="tweaks-body">
+
+      <div class="tw-section">
+        <div class="tw-label">Hero Düzeni</div>
+        <div class="tw-radio" data-control="heroVariant">
+          <button data-value="manifesto" class="active">
+            <span>Manifesto</span>
+            <span class="sub">Metin + yan görsel</span>
+          </button>
+          <button data-value="full-image">
+            <span>Full Image</span>
+            <span class="sub">Tam ekran kapak</span>
+          </button>
+          <button data-value="split">
+            <span>Split</span>
+            <span class="sub">Koyu metin / görsel</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tw-section">
+        <div class="tw-label">Proje Kart Düzeni</div>
+        <div class="tw-radio" data-control="cardVariant">
+          <button data-value="standard" class="active">
+            <span>Standart</span>
+            <span class="sub">Görsel + altta meta</span>
+          </button>
+          <button data-value="overlay">
+            <span>Overlay</span>
+            <span class="sub">Görsel üzerinde başlık</span>
+          </button>
+          <button data-value="minimal">
+            <span>Minimal</span>
+            <span class="sub">Sadece görsel + isim</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tw-section">
+        <div class="tw-label">Vurgu Rengi</div>
+        <div class="tw-swatches" data-control="accent">
+          <div class="tw-swatch active" data-accent="copper" style="background: #B46A3C;" title="Bakır (Varsayılan)"></div>
+          <div class="tw-swatch" data-accent="brass" style="background: #A8843A;" title="Pirinç"></div>
+          <div class="tw-swatch" data-accent="terracotta" style="background: #C75D3A;" title="Kiremit"></div>
+          <div class="tw-swatch" data-accent="ink" style="background: #2F3437;" title="Antrasit (mono)"></div>
+        </div>
+      </div>
+
+      <div class="tw-section">
+        <div class="tw-label">Başlık Fontu</div>
+        <div class="tw-radio" data-control="serif">
+          <button data-value="'Fraunces', serif" class="active" style="font-family: 'Fraunces', serif;">
+            <span>Fraunces</span>
+            <span class="sub">Modern, varsayılan</span>
+          </button>
+          <button data-value="'Cormorant Garamond', serif" style="font-family: 'Cormorant Garamond', serif; font-size: 14px;">
+            <span>Cormorant Garamond</span>
+            <span class="sub">Zarif</span>
+          </button>
+          <button data-value="'Playfair Display', serif" style="font-family: 'Playfair Display', serif;">
+            <span>Playfair Display</span>
+            <span class="sub">Klasik premium</span>
+          </button>
+          <button data-value="'EB Garamond', serif" style="font-family: 'EB Garamond', serif; font-size: 14px;">
+            <span>EB Garamond</span>
+            <span class="sub">Sakin, edebi</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tw-section">
+        <div class="tw-label">Gövde Fontu</div>
+        <div class="tw-radio" data-control="sans">
+          <button data-value="'Inter', system-ui, sans-serif" class="active" style="font-family: 'Inter', sans-serif;">
+            <span>Inter</span>
+            <span class="sub">Modern, varsayılan</span>
+          </button>
+          <button data-value="'DM Sans', sans-serif" style="font-family: 'DM Sans', sans-serif;">
+            <span>DM Sans</span>
+            <span class="sub">Yumuşak</span>
+          </button>
+          <button data-value="'Manrope', sans-serif" style="font-family: 'Manrope', sans-serif;">
+            <span>Manrope</span>
+            <span class="sub">Geometrik</span>
+          </button>
+          <button data-value="'IBM Plex Sans', sans-serif" style="font-family: 'IBM Plex Sans', sans-serif;">
+            <span>IBM Plex Sans</span>
+            <span class="sub">Teknik</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tw-section">
+        <div class="tw-label">Yoğunluk</div>
+        <div class="tw-radio" data-control="density">
+          <button data-value="cozy"><span>Cozy</span><span class="sub">Kompakt</span></button>
+          <button data-value="standard" class="active"><span>Standart</span><span class="sub">Varsayılan</span></button>
+          <button data-value="spacious"><span>Ferah</span><span class="sub">Bol nefes</span></button>
+        </div>
+      </div>
+
+      <div class="tw-section">
+        <button class="tw-reset" id="tweaks-reset">Tüm değişiklikleri sıfırla</button>
+      </div>
+
+    </div>
+  </aside>
+
+<script>
+const tweaks = /*EDITMODE-BEGIN*/{
+  "heroVariant": "manifesto",
+  "cardVariant": "standard",
+  "accent": "copper",
+  "serif": "'Fraunces', serif",
+  "sans": "'Inter', system-ui, sans-serif",
+  "density": "standard"
+}/*EDITMODE-END*/;
+
+const ACCENT_PRESETS = {
+  copper:    { accent: "#B46A3C", accentHover: "#96552F", accent2: "#C3A46E", accentBg: "#F2DFD2" },
+  brass:     { accent: "#A8843A", accentHover: "#8A6A2C", accent2: "#D0B47A", accentBg: "#F0E3CA" },
+  terracotta:{ accent: "#C75D3A", accentHover: "#A24A2B", accent2: "#D9967A", accentBg: "#F5DACD" },
+  ink:       { accent: "#2F3437", accentHover: "#1F2426", accent2: "#6E6A60", accentBg: "#E6E1D6" },
+};
+
+// Page tabs
+const pageTabs = document.getElementById("page-tabs");
+const desktopFrame = document.getElementById("desktop-frame");
+const mobileFrame = document.getElementById("mobile-frame");
+const urlPage = document.getElementById("url-page");
+
+function navigate(href) {
+  if (!href) return;
+  const cleanHref = href.replace(/^pages\//, "").replace(/\.html$/, "");
+  urlPage.textContent = cleanHref;
+
+  // Update both iframes
+  desktopFrame.src = href;
+  mobileFrame.src = href;
+
+  // Update tab buttons
+  pageTabs.querySelectorAll("button").forEach(b => {
+    b.classList.toggle("active", b.dataset.page === href || b.dataset.page === "pages/" + cleanHref + ".html");
+  });
+}
+
+pageTabs.addEventListener("click", (e) => {
+  const btn = e.target.closest("button");
+  if (!btn) return;
+  navigate(btn.dataset.page);
+});
+
+// Reload button
+document.getElementById("reload-btn").addEventListener("click", () => {
+  desktopFrame.src = desktopFrame.src;
+  mobileFrame.src = mobileFrame.src;
+});
+
+// Receive navigate messages from iframes
+window.addEventListener("message", (ev) => {
+  const d = ev.data;
+  if (!d || typeof d !== "object") return;
+  if (d.type === "izgenc:navigate") {
+    // Translate the href (pages internally use bare names like "projeler.html"; we use "pages/projeler.html")
+    let href = d.href;
+    if (!href.startsWith("pages/") && !href.startsWith("http")) {
+      href = "pages/" + href.replace(/^\.\//, "");
+    }
+    navigate(href);
+  }
+});
+
+// Tweaks
+const tweaksPanel = document.getElementById("tweaks-panel");
+const tweaksBtn = document.getElementById("tweaks-btn");
+const tweaksClose = document.getElementById("tweaks-close");
+const stage = document.getElementById("stage");
+
+function setTweaksOpen(open) {
+  tweaksPanel.classList.toggle("open", open);
+  tweaksBtn.classList.toggle("on", open);
+  stage.classList.toggle("with-tweaks", open);
+}
+tweaksBtn.addEventListener("click", () => setTweaksOpen(!tweaksPanel.classList.contains("open")));
+tweaksClose.addEventListener("click", () => setTweaksOpen(false));
+
+function applyTweaksToIframes() {
+  const t = {
+    heroVariant: tweaks.heroVariant,
+    cardVariant: tweaks.cardVariant,
+    serif: tweaks.serif,
+    sans: tweaks.sans,
+    density: tweaks.density,
+    ...ACCENT_PRESETS[tweaks.accent],
+  };
+  const msg = { type: "izgenc:tweaks", tweaks: t };
+  try { desktopFrame.contentWindow.postMessage(msg, "*"); } catch(e) {}
+  try { mobileFrame.contentWindow.postMessage(msg, "*"); } catch(e) {}
+}
+
+// Apply tweaks every time an iframe loads (so new pages get them)
+desktopFrame.addEventListener("load", () => setTimeout(applyTweaksToIframes, 80));
+mobileFrame.addEventListener("load", () => setTimeout(applyTweaksToIframes, 80));
+
+// Hook all radio controls
+document.querySelectorAll(".tw-radio").forEach(group => {
+  const control = group.dataset.control;
+  group.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      group.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      tweaks[control] = btn.dataset.value;
+      applyTweaksToIframes();
+    });
+  });
+});
+
+// Swatches
+document.querySelectorAll(".tw-swatches .tw-swatch").forEach(sw => {
+  sw.addEventListener("click", () => {
+    document.querySelectorAll(".tw-swatches .tw-swatch").forEach(s => s.classList.remove("active"));
+    sw.classList.add("active");
+    tweaks.accent = sw.dataset.accent;
+    applyTweaksToIframes();
+  });
+});
+
+// Reset
+document.getElementById("tweaks-reset").addEventListener("click", () => {
+  tweaks.heroVariant = "manifesto";
+  tweaks.cardVariant = "standard";
+  tweaks.accent = "copper";
+  tweaks.serif = "'Fraunces', serif";
+  tweaks.sans = "'Inter', system-ui, sans-serif";
+  tweaks.density = "standard";
+  // Update UI
+  document.querySelectorAll(".tw-radio").forEach(group => {
+    const control = group.dataset.control;
+    group.querySelectorAll("button").forEach(b => {
+      b.classList.toggle("active", b.dataset.value === tweaks[control]);
+    });
+  });
+  document.querySelectorAll(".tw-swatch").forEach(s => s.classList.toggle("active", s.dataset.accent === "copper"));
+  applyTweaksToIframes();
+  // Force iframe reloads to reapply hero variant correctly
+  desktopFrame.src = desktopFrame.src;
+  mobileFrame.src = mobileFrame.src;
+});
+
+// Keyboard shortcut: T = toggle tweaks
+document.addEventListener("keydown", (e) => {
+  if (e.key === "t" && !e.metaKey && !e.ctrlKey && !e.altKey && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+    setTweaksOpen(!tweaksPanel.classList.contains("open"));
+  }
+});
+</script>
+</body>
+</html>
