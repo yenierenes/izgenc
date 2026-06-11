@@ -1,0 +1,285 @@
+/* İzgenç Yapı — "Kurumsal Hafıza / Katmanlanan Yolculuk"
+   Hakkımızda sayfası tarih deneyimi. Scoped, premium, scroll-kontrollü.
+   JS yoksa / reduced-motion'da dikey premium timeline olarak okunur kalır. */
+
+.history-experience {
+  --he-bg: #14171A;
+  --he-stone: #E7DECE;
+  --he-stone-dim: rgba(231,222,206,0.42);
+  --he-line: rgba(231,222,206,0.14);
+  --he-copper: #917F5A;
+  --he-brass: #917F5A;
+  --he-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  position: relative;
+  background: var(--he-bg);
+  color: rgba(255,253,248,0.84);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ---------- arka plan görsel katmanları ---------- */
+/* yalnız desktop pinned (enhanced) deneyimde görünür; mobil/fallback'te gizli (sade) */
+.history-experience__bg { display: none; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.history-experience.is-enhanced .history-experience__bg {
+  display: block;
+  left: 50%; right: auto; width: 100vw; margin-left: -50vw;   /* tam ekrana yay */
+  will-change: transform;                                     /* scroll parallax (JS) */
+}
+.history-experience__intro, .history-experience__stage { position: relative; z-index: 1; }
+.history-experience__bg::after {              /* zemini koyulaştıran vinyet, okunurluk */
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 90% at 80% 40%, transparent 0%, rgba(20,23,26,0.55) 70%),
+    linear-gradient(180deg, rgba(20,23,26,0.4), transparent 30%, transparent 70%, rgba(20,23,26,0.55));
+}
+.history-experience__layer {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transform: scale(1.06);          /* parallax kayması kenarda boşluk açmasın */
+  transition: opacity 260ms var(--he-ease);
+  will-change: opacity;
+}
+.history-experience__layer.is-active { opacity: 1; }
+
+/* ---------- sahne giriş animasyonları (katman aktif olunca oynar) ---------- */
+.he-layer--origin .he-pin,
+.he-layer--origin .he-ring,
+.he-layer--origin .he-pin-label,
+.he-layer--construction .he-slide,
+.he-layer--glass .he-panel,
+.he-layer--today .he-bignum,
+.he-layer--today .he-bigcap { transform-box: fill-box; }
+
+.he-layer--origin .he-pin { transform-origin: 50% 100%; }
+.he-layer--origin .he-ring { transform-origin: 50% 50%; }
+.he-layer--construction .he-slide { transform-origin: 50% 50%; }
+.he-layer--glass .he-panel { transform-origin: 50% 50%; opacity: 0; }
+.he-layer--today .he-bignum { transform-origin: 50% 50%; }
+
+.he-layer--origin.is-active .he-sea { animation: heFade 0.7s var(--he-ease) both; }
+.he-layer--origin.is-active .he-pin { animation: hePinDrop 0.72s var(--he-ease) both; }
+.he-layer--origin.is-active .he-ring { animation: heRingPulse 0.8s var(--he-ease) 0.5s both; }
+.he-layer--origin.is-active .he-pin-label { animation: heFadeUp 0.5s var(--he-ease) 0.5s both; }
+
+.he-layer--construction.is-active .he-slide { animation: heSlideIn 0.66s var(--he-ease) both; }
+
+.he-layer--glass.is-active .he-from-l { animation: heFromL 0.5s var(--he-ease) both; }
+.he-layer--glass.is-active .he-from-r { animation: heFromR 0.5s var(--he-ease) both; }
+.he-layer--glass.is-active .he-panels .he-panel:nth-child(1) { animation-delay: 0.06s; }
+.he-layer--glass.is-active .he-panels .he-panel:nth-child(2) { animation-delay: 0.13s; }
+.he-layer--glass.is-active .he-panels .he-panel:nth-child(3) { animation-delay: 0.20s; }
+.he-layer--glass.is-active .he-panels .he-panel:nth-child(4) { animation-delay: 0.27s; }
+.he-layer--glass.is-active .he-panels .he-panel:nth-child(5) { animation-delay: 0.34s; }
+.he-layer--glass.is-active .he-panels .he-panel:nth-child(6) { animation-delay: 0.41s; }
+.he-layer--glass.is-active .he-panels .he-panel:nth-child(7) { animation-delay: 0.48s; }
+.he-layer--glass.is-active .he-panels .he-panel:nth-child(8) { animation-delay: 0.55s; }
+
+.he-layer--today.is-active .he-bignum { animation: heBigIn 0.85s var(--he-ease) both; }
+.he-layer--today.is-active .he-bigcap { animation: heFadeUp 0.6s var(--he-ease) 0.35s both; }
+
+@keyframes heFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes heFadeUp { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@keyframes hePinDrop { 0% { opacity: 0; transform: translateY(-74px); } 62% { opacity: 1; transform: translateY(9px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes heRingPulse { 0% { opacity: 0.9; transform: scale(0.3); } 100% { opacity: 0; transform: scale(2.4); } }
+@keyframes heSlideIn { 0% { opacity: 0; transform: translateX(-320px); } 100% { opacity: 1; transform: translateX(0); } }
+@keyframes heFromL { 0% { opacity: 0; transform: translateX(-300px); } 100% { opacity: 1; transform: translateX(0); } }
+@keyframes heFromR { 0% { opacity: 0; transform: translateX(300px); } 100% { opacity: 1; transform: translateX(0); } }
+@keyframes heBigIn { from { opacity: 0; transform: scale(1.14); } to { opacity: 1; transform: scale(1); } }
+.history-experience__svg { width: 100%; height: 100%; display: block; }
+
+/* ---------- inner ---------- */
+.history-experience__inner {
+  position: relative; z-index: 1;
+  max-width: 1180px; margin: 0 auto;
+  padding: 84px var(--gutter, 24px);
+}
+
+/* ---------- intro ---------- */
+.history-experience__intro { max-width: 640px; }
+.history-experience__intro .eyebrow {
+  font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--he-brass); font-weight: 500;
+}
+.history-experience__title {
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 44px); line-height: 1.08; letter-spacing: -0.02em;
+  color: #FFFDF8; margin: 16px 0 0; max-width: 18ch;
+}
+.history-experience__lede {
+  margin: 18px 0 0; font-size: 16px; line-height: 1.6;
+  color: rgba(255,253,248,0.66); max-width: 52ch;
+}
+.history-experience__progress { display: flex; align-items: center; gap: 14px; margin-top: 30px; max-width: 380px; }
+.history-experience__progress-track {
+  position: relative; flex: 1; height: 2px; border-radius: 2px;
+  background: var(--he-line); overflow: hidden;
+}
+.history-experience__progress-fill {
+  position: absolute; left: 0; top: 0; height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--he-copper), var(--he-brass));
+  transition: width 480ms var(--he-ease);
+}
+.history-experience__progress-label {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+  color: rgba(255,253,248,0.5); white-space: nowrap;
+}
+.history-experience__progress-label [data-progress-step] { color: var(--he-brass); }
+.history-experience__progress-label .he-sep { margin: 0 4px; opacity: 0.5; }
+
+/* ---------- stage (base = dikey timeline) ---------- */
+.history-experience__stage { margin-top: 44px; }
+.history-experience__year { display: none; }          /* büyük yıl yalnız enhanced */
+.history-experience__panel { display: none; }         /* panel yalnız enhanced */
+
+.history-experience__rail { position: relative; margin: 0; padding: 0; }
+.history-experience__rail-line {
+  position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px;
+  background: var(--he-line); border-radius: 2px; overflow: hidden;
+}
+.history-experience__rail-fill {
+  position: absolute; left: 0; top: 0; width: 100%; height: 0%;
+  background: linear-gradient(180deg, var(--he-copper), var(--he-brass));
+  transition: height 560ms var(--he-ease);
+}
+.history-experience__milestone {
+  position: relative; padding: 0 0 40px 46px;
+}
+.history-experience__milestone:last-child { padding-bottom: 0; }
+.history-experience__node {
+  position: absolute; left: 0; top: 4px;
+  width: 16px; height: 16px; border-radius: 999px;
+  background: var(--he-bg); border: 2px solid var(--he-stone-dim);
+  transition: border-color 300ms var(--he-ease), box-shadow 300ms var(--he-ease), background 300ms var(--he-ease);
+}
+.history-experience__milestone.is-done .history-experience__node { border-color: var(--he-brass); background: var(--he-brass); }
+.history-experience__milestone.is-active .history-experience__node {
+  border-color: var(--he-copper); background: var(--he-copper);
+  box-shadow: 0 0 0 5px rgba(28, 76, 152,0.20), 0 0 16px rgba(28, 76, 152,0.5);
+}
+.history-experience__mile-year {
+  display: block; font-family: var(--font-serif); font-size: 30px; line-height: 1;
+  color: var(--he-copper); letter-spacing: -0.01em;
+}
+.history-experience__mile-title {
+  margin: 12px 0 0; font-family: var(--font-serif); font-weight: 400;
+  font-size: 21px; line-height: 1.2; color: #FFFDF8;
+}
+.history-experience__mile-text {
+  margin: 9px 0 0; font-size: 15.5px; line-height: 1.6;
+  color: rgba(255,253,248,0.66); max-width: 54ch;
+}
+.history-experience__mile-metric {
+  display: inline-flex; align-items: baseline; gap: 8px; margin-top: 14px;
+  padding: 7px 14px; border: 1px solid rgba(145, 127, 90,0.4); border-radius: 999px;
+}
+.history-experience__mile-metric strong { font-family: var(--font-serif); font-size: 18px; color: var(--he-brass); }
+.history-experience__mile-metric span { font-size: 12px; letter-spacing: 0.04em; color: rgba(255,253,248,0.6); }
+
+/* =====================================================================
+   ENHANCED — desktop pin + scrub (yalnız geniş ekran, motion açık)
+   ===================================================================== */
+@media (min-width: 1024px) {
+  .history-experience.is-enhanced .history-experience__inner {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 124px; padding-bottom: 64px;
+  }
+  .is-enhanced .history-experience__intro { max-width: 760px; }
+  .is-enhanced .history-experience__stage {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: minmax(220px, 0.82fr) 70px minmax(0, 1.15fr);
+    grid-template-areas: "year rail panel";
+    align-items: center; gap: 0 44px;
+  }
+
+  /* büyük aktif yıl */
+  .is-enhanced .history-experience__year {
+    display: block; grid-area: year; align-self: center;
+  }
+  .is-enhanced .history-experience__year span {
+    display: block; font-family: var(--font-serif); font-weight: 300;
+    font-size: clamp(76px, 8.6vw, 150px); line-height: 0.92; letter-spacing: -0.03em;
+    color: var(--he-stone);
+  }
+  .is-enhanced .history-experience__year .he-year-cap {
+    display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--he-brass); margin-top: 14px; font-weight: 500;
+  }
+
+  /* rail = orta ince dikey hat + düğümler */
+  .is-enhanced .history-experience__rail {
+    grid-area: rail; height: 360px; align-self: center; margin: 0;
+    display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+  }
+  .is-enhanced .history-experience__rail-line { left: 50%; transform: translateX(-50%); top: 6px; bottom: 6px; }
+  .is-enhanced .history-experience__milestone {
+    position: relative; padding: 0; display: flex; align-items: center; justify-content: center;
+  }
+  .is-enhanced .history-experience__node { position: static; }
+  .is-enhanced .history-experience__mile-body { display: none; }   /* içerik panelden gelir */
+
+  /* sağ panel */
+  .is-enhanced .history-experience__panel {
+    display: block; grid-area: panel; align-self: center; max-width: 520px;
+  }
+  .is-enhanced .history-experience__panel-tag {
+    display: inline-block; font-family: var(--font-mono); font-size: 12px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--he-brass);
+    padding-bottom: 14px;
+  }
+  .is-enhanced .history-experience__panel-title {
+    margin: 0; font-family: var(--font-serif); font-weight: 400;
+    font-size: clamp(26px, 2.6vw, 36px); line-height: 1.12; color: #FFFDF8; max-width: 16ch;
+  }
+  .is-enhanced .history-experience__panel-text {
+    margin: 18px 0 0; font-size: 17px; line-height: 1.66; color: rgba(255,253,248,0.74); max-width: 46ch;
+  }
+  .is-enhanced .history-experience__metric {
+    display: inline-flex; align-items: baseline; gap: 9px; margin-top: 24px;
+    padding: 9px 18px; border: 1px solid rgba(145, 127, 90,0.42); border-radius: 999px;
+    background: rgba(145, 127, 90,0.06);
+  }
+  .is-enhanced .history-experience__metric[hidden] { display: none; }
+  .is-enhanced .history-experience__metric strong { font-family: var(--font-serif); font-size: 22px; color: var(--he-brass); }
+  .is-enhanced .history-experience__metric span { font-size: 12.5px; letter-spacing: 0.04em; color: rgba(255,253,248,0.66); }
+
+  /* aktif yıl & panel değişim animasyonu */
+  .is-enhanced .history-experience__year.is-anim span { animation: heYearIn 560ms var(--he-ease); }
+  .is-enhanced .history-experience__panel.is-anim .history-experience__panel-title,
+  .is-enhanced .history-experience__panel.is-anim .history-experience__panel-text,
+  .is-enhanced .history-experience__panel.is-anim .history-experience__panel-tag {
+    animation: hePanelIn 560ms var(--he-ease) both;
+  }
+  .is-enhanced .history-experience__panel.is-anim .history-experience__panel-text { animation-delay: 60ms; }
+}
+
+@keyframes heYearIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes hePanelIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* =====================================================================
+   MOBILE / TABLET (<1024) — pin yok, dikey premium timeline
+   ===================================================================== */
+@media (max-width: 1023px) {
+  .history-experience__inner { padding-top: 64px; padding-bottom: 64px; }
+}
+@media (max-width: 600px) {
+  .history-experience__mile-year { font-size: 26px; }
+  .history-experience__milestone { padding-left: 40px; }
+}
+
+/* =====================================================================
+   reduced-motion / static
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .history-experience__layer,
+  .history-experience__rail-fill,
+  .history-experience__node { transition: none; }
+  .history-experience [class*="he-"] { animation: none !important; }
+  .he-layer--glass .he-panel { opacity: 1; }
+  .he-layer--origin .he-pin,
+  .he-layer--origin .he-pin-label,
+  .he-layer--today .he-bignum { opacity: 1; transform: none; }
+  .he-layer--origin .he-ring { display: none; }
+}
+.history-experience.is-static .history-experience__layer { transition: none; }
