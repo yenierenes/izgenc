@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projeler — İzgenç Yapı</title>
+  <meta name="description" content="İzgenç Yapı projelerinin tamamı: devam eden ve tamamlanan kat karşılığı, kentsel dönüşüm ve mimari uygulamalar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,0..100&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body data-screen-label="04 Projeler">
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="sheet-head desktop-only">
+        <nav class="breadcrumb" aria-label="Sayfa yolu">
+          <a href="anasayfa.html">Ana Sayfa</a>
+          <span class="sep">/</span>
+          <span>Projeler</span>
+        </nav>
+        <div class="sheet-no"><span class="tick"></span>DOSYA · <b>PRJ-2026</b></div>
+      </div>
+      <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; margin-top: 40px;" class="prjhead">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px;">
+            <div class="eyebrow" style="margin-bottom: 0;">Portföy</div>
+            <div class="sheet-no mobile-only" style="margin-bottom: 0;"><span class="tick"></span>DOSYA · <b>PRJ-2026</b></div>
+          </div>
+          <h1 style="margin-top:20px;">Yaşam ve <em>yatırım değeri</em> taşıyan projeler</h1>
+          <p class="lede">İzgenç Yapı tarafından geliştirilen projeleri; kapsam, lokasyon ve proje türüne göre inceleyerek size en uygun yaşam ve yatırım fırsatlarını keşfedebilirsiniz.</p>
+        </div>
+        <div class="geo-filter" aria-label="Lokasyona göre filtrele — harita">
+          <svg viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="İzmir bölge haritası">
+            <!-- kıyı hattı -->
+            <path class="lk-line" stroke-width="1.5" d="M150,34 C168,86 198,118 248,140 C300,162 342,166 354,190 C366,216 340,240 296,250 C238,263 168,254 118,244"/>
+            <path class="lk-soft" stroke-width="1" d="M163,30 C182,80 210,110 256,131 C306,152 350,158 364,186 C378,218 348,248 300,259 C240,272 166,263 114,253"/>
+            <!-- körfez dalgaları -->
+            <g class="lk-soft" stroke-width="1">
+              <path d="M158,180 q18,-6 36,0 t36,0 t36,0"/>
+              <path d="M148,202 q18,-6 36,0 t36,0 t36,0 t36,0"/>
+              <path d="M158,224 q18,-6 36,0 t36,0"/>
+            </g>
+            <text x="186" y="166" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2.5" fill="rgba(110,106,96,0.65)">İZMİR KÖRFEZİ</text>
+            <!-- merkez işareti -->
+            <circle cx="338" cy="208" r="3" fill="none" stroke="rgba(58,53,47,0.45)" stroke-width="1.2"/>
+            <text x="350" y="212" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" fill="rgba(110,106,96,0.65)">İZMİR</text>
+            <!-- ilçe pinleri -->
+            <g class="geo-pin" data-filter="menemen" tabindex="0" role="button" aria-label="Menemen projelerini göster">
+              <rect class="geo-dia" x="206" y="56" width="9" height="9" transform="rotate(45 210.5 60.5)" fill="var(--c-card)" stroke="rgba(58,53,47,0.55)" stroke-width="1.4"/>
+              <text x="226" y="65" font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing="1.5" fill="#4A4D4F">MENEMEN</text>
+            </g>
+            <g class="geo-pin" data-filter="karsiyaka" tabindex="0" role="button" aria-label="Karşıyaka projelerini göster">
+              <rect class="geo-dia" x="234" y="116" width="9" height="9" transform="rotate(45 238.5 120.5)" fill="var(--c-card)" stroke="rgba(58,53,47,0.55)" stroke-width="1.4"/>
+              <text x="254" y="125" font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing="1.5" fill="#4A4D4F">KARŞIYAKA</text>
+            </g>
+            <g class="geo-pin" data-filter="buca" tabindex="0" role="button" aria-label="Buca projelerini göster">
+              <rect class="geo-dia" x="364" y="276" width="9" height="9" transform="rotate(45 368.5 280.5)" fill="var(--c-card)" stroke="rgba(58,53,47,0.55)" stroke-width="1.4"/>
+              <text x="384" y="285" font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing="1.5" fill="#4A4D4F">BUCA</text>
+            </g>
+            <g class="geo-pin" data-filter="karabaglar" tabindex="0" role="button" aria-label="Karabağlar projelerini göster">
+              <rect class="geo-dia" x="268" y="300" width="9" height="9" transform="rotate(45 272.5 304.5)" fill="var(--c-card)" stroke="rgba(58,53,47,0.55)" stroke-width="1.4"/>
+              <text x="288" y="309" font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing="1.5" fill="#4A4D4F">KARABAĞLAR</text>
+            </g>
+            <g class="geo-pin" data-filter="menderes" tabindex="0" role="button" aria-label="Menderes projelerini göster">
+              <rect class="geo-dia" x="318" y="362" width="9" height="9" transform="rotate(45 322.5 366.5)" fill="var(--c-card)" stroke="rgba(58,53,47,0.55)" stroke-width="1.4"/>
+              <text x="338" y="371" font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing="1.5" fill="#4A4D4F">MENDERES</text>
+            </g>
+            <!-- bağlantı çizgileri -->
+            <g class="lk-soft" stroke-width="0.9" stroke-dasharray="2 4">
+              <line x1="210" y1="70" x2="232" y2="112"/>
+              <line x1="300" y1="259" x2="272" y2="298"/>
+              <line x1="318" y1="270" x2="364" y2="278"/>
+              <line x1="300" y1="316" x2="320" y2="360"/>
+            </g>
+            <!-- Marmaris ek paftası -->
+            <g class="geo-pin" data-filter="marmaris" tabindex="0" role="button" aria-label="Marmaris projelerini göster">
+              <rect x="44" y="318" width="158" height="86" fill="none" stroke="rgba(58,53,47,0.30)" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="56" y="338" font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2" fill="rgba(110,106,96,0.7)">EK PAFTA · MUĞLA</text>
+              <rect class="geo-dia" x="62" y="358" width="9" height="9" transform="rotate(45 66.5 362.5)" fill="var(--c-card)" stroke="rgba(58,53,47,0.55)" stroke-width="1.4"/>
+              <text x="82" y="367" font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing="1.5" fill="#4A4D4F">MARMARİS</text>
+              <path class="lk-soft" stroke-width="1" d="M58,386 q14,-5 28,0 t28,0 t28,0 t28,0"/>
+            </g>
+            <!-- pusula -->
+            <g transform="translate(478,52)">
+              <line x1="0" y1="16" x2="0" y2="-16" stroke="rgba(58,53,47,0.45)" stroke-width="1.2"/>
+              <path d="M0,-16 L5,-5 L0,-8 L-5,-5 Z" fill="var(--c-accent)"/>
+              <text x="0" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1" fill="rgba(110,106,96,0.7)">K</text>
+            </g>
+          </svg>
+          <div style="margin-top: 6px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--c-muted); text-align: right;">Pinlere tıklayın — liste filtrelenir</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="filter-bar">
+        <div class="filter-group" aria-label="Durum filtresi">
+          <button class="chip active" data-filter="all">Tümü</button>
+          <button class="chip" data-filter="devam">Devam Eden</button>
+          <button class="chip" data-filter="tamam">Tamamlanan</button>
+        </div>
+        <div class="filter-group desktop-only" aria-label="Lokasyon filtresi">
+          <button class="chip" data-filter="karsiyaka">Karşıyaka</button>
+          <button class="chip" data-filter="buca">Buca</button>
+          <button class="chip" data-filter="karabaglar">Karabağlar</button>
+          <button class="chip" data-filter="menderes">Menderes</button>
+          <button class="chip" data-filter="menemen">Menemen</button>
+          <button class="chip" data-filter="marmaris">Marmaris</button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <div class="filter-meta">Tamamlanan Proje <b>200+</b></div>
+          <div class="view-toggle" role="tablist" aria-label="Görünüm seçimi">
+            <button type="button" class="active" data-view="grid" role="tab" aria-selected="true">Galeri</button>
+            <button type="button" data-view="ledger" role="tab" aria-selected="false">Endeks</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 24px;">
+    <div class="container">
+      <div class="projects-grid cols-3" data-card="standard" data-filterable>
+        <a class="project reveal" href="grand-corner.html" data-status="devam" data-type="karsiyaka">
+          <div class="media">
+            <img src="https://izgenc.com/wp-content/uploads/elementor/thumbs/GRAND-CORNER-KAPAK-qzmjkc1vumfzievkxptt13djrhqpaiphh181p6wkkw.jpg" alt="Grand Corner" onerror="this.src='https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1000&q=80&auto=format&fit=crop'">
+            <div class="status"><span class="dot"></span>Devam Ediyor</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Karşıyaka · İmbatlı</span><span>Karma · 8 Katlı</span></div>
+            <h3>Grand Corner</h3>
+            <p class="desc">1+1, 2+1, 3+1 daire ve ofis seçenekleri; kapalı otopark.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+        <a class="project reveal" href="grand-corner.html" data-status="devam" data-type="buca">
+          <div class="media">
+            <img src="https://izgenc.com/wp-content/uploads/elementor/thumbs/KAPAK-SON-scaled-qwwikw04upjleskjfhlt52bzx2pr4j18mcxo9zhkq8.jpg" alt="Prestij Evleri" onerror="this.src='https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1000&q=80&auto=format&fit=crop'">
+            <div class="status"><span class="dot"></span>Devam Ediyor</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Buca · İzmir</span><span>Konut · 3 Blok</span></div>
+            <h3>Prestij Evleri</h3>
+            <p class="desc">Yüzme havuzu ve geniş peyzaj alanlarıyla seçkin yaşam.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+        <a class="project reveal" href="grand-corner.html" data-status="devam" data-type="karsiyaka">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1000&q=80&auto=format&fit=crop" alt="Karşıyaka Anadolu Caddesi">
+            <div class="status"><span class="dot"></span>Devam Ediyor</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Karşıyaka · İzmir</span><span>Konut</span></div>
+            <h3>Karşıyaka Anadolu Caddesi</h3>
+            <p class="desc">Anadolu Caddesi üzerinde devam eden modern konut inşaatı.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+        <a class="project reveal" href="grand-corner.html" data-status="tamam" data-type="karabaglar">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1000&q=80&auto=format&fit=crop" alt="Yeşilyurt Bozyaka">
+            <div class="status completed"><span class="dot"></span>Tamamlandı</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Karabağlar · Yeşilyurt</span><span>Konut</span></div>
+            <h3>Yeşilyurt Bozyaka</h3>
+            <p class="desc">Bozyaka bölgesinde tamamlanan modern konut projesi.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+        <a class="project reveal" href="grand-corner.html" data-status="tamam" data-type="karabaglar">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=80&auto=format&fit=crop" alt="Üzümcü Okulu Projesi">
+            <div class="status completed"><span class="dot"></span>Tamamlandı</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Karabağlar · Yeşilyurt</span><span>Konut</span></div>
+            <h3>Üzümcü Okulu Projesi</h3>
+            <p class="desc">Yeşilyurt bölgesinde tamamlanan butik konut uygulaması.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+        <a class="project reveal" href="grand-corner.html" data-status="tamam" data-type="menderes">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1000&q=80&auto=format&fit=crop" alt="Menderes Çamönü Projesi">
+            <div class="status completed"><span class="dot"></span>Tamamlandı</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Menderes · Çamönü</span><span>Konut</span></div>
+            <h3>Menderes Çamönü Projesi</h3>
+            <p class="desc">Menderes Çamönü mevkiindeki konut uygulaması.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+        <a class="project reveal" href="grand-corner.html" data-status="tamam" data-type="karabaglar">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1494145904049-0dca59b4bbad?w=1000&q=80&auto=format&fit=crop" alt="Yaylacık 175 Sok. Projesi">
+            <div class="status completed"><span class="dot"></span>Tamamlandı</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Karabağlar · Yaylacık</span><span>Konut</span></div>
+            <h3>Yaylacık 175 Sok.</h3>
+            <p class="desc">Yaylacık Mahallesi 175. sokakta tamamlanan konut projesi.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+        <a class="project reveal" href="grand-corner.html" data-status="tamam" data-type="karabaglar">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1000&q=80&auto=format&fit=crop" alt="Yaylacık 179 Sok. Projesi">
+            <div class="status completed"><span class="dot"></span>Tamamlandı</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Karabağlar · Yaylacık</span><span>Konut</span></div>
+            <h3>Yaylacık 179 Sok.</h3>
+            <p class="desc">Yaylacık Mahallesi 179. sokakta yer alan konut uygulaması.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+        <a class="project reveal" href="grand-corner.html" data-status="tamam" data-type="menemen">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=1000&q=80&auto=format&fit=crop" alt="Menemen Seyrek İnşaatı">
+            <div class="status completed"><span class="dot"></span>Tamamlandı</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Menemen · Seyrek</span><span>Konut</span></div>
+            <h3>Menemen Seyrek İnşaatı</h3>
+            <p class="desc">Menemen Seyrek bölgesinde tamamlanan konut inşaatı.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+        <a class="project reveal" href="grand-corner.html" data-status="tamam" data-type="buca">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80&auto=format&fit=crop" alt="Buca Gediz Projesi">
+            <div class="status completed"><span class="dot"></span>Tamamlandı</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Buca · Gediz</span><span>Konut</span></div>
+            <h3>Buca Gediz Projesi</h3>
+            <p class="desc">Buca Gediz Mahallesi'nde tamamlanan konut projesi.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+        <a class="project reveal" href="grand-corner.html" data-status="tamam" data-type="marmaris">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1000&q=80&auto=format&fit=crop" alt="Marmaris Projesi">
+            <div class="status completed"><span class="dot"></span>Tamamlandı</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Marmaris · Muğla</span><span>Konut</span></div>
+            <h3>Marmaris Projesi</h3>
+            <p class="desc">Köklerimizin bulunduğu Marmaris'te tamamlanan yaşam alanı.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+        <a class="project reveal" href="grand-corner.html" data-status="tamam" data-type="karabaglar">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=1000&q=80&auto=format&fit=crop" alt="Yeşilyurt Proje 1">
+            <div class="status completed"><span class="dot"></span>Tamamlandı</div>
+          </div>
+          <div class="body">
+            <div class="meta"><span>Karabağlar · Yeşilyurt</span><span>Konut</span></div>
+            <h3>Yeşilyurt Proje 1</h3>
+            <p class="desc">Yeşilyurt portföyümüze ait, tamamlanmış konut projesi.</p>
+            <div class="arrow">→</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Endeks görünümü: mimari kayıt defteri -->
+      <div class="ledger" id="prj-ledger" hidden>
+        <a class="ledger-row" href="grand-corner.html" data-status="devam" data-type="karsiyaka">
+          <span class="ledger-no">PRJ—001</span>
+          <span class="ledger-title">Grand Corner</span>
+          <span class="ledger-meta"><span>Karşıyaka · İmbatlı</span><span>Karma · 8 Katlı</span></span>
+          <span class="ledger-end"><span class="ledger-state"><span class="dot"></span>Devam</span><span class="arr">→</span></span>
+        </a>
+        <a class="ledger-row" href="grand-corner.html" data-status="devam" data-type="buca">
+          <span class="ledger-no">PRJ—002</span>
+          <span class="ledger-title">Prestij Evleri</span>
+          <span class="ledger-meta"><span>Buca · İzmir</span><span>Konut · 3 Blok</span></span>
+          <span class="ledger-end"><span class="ledger-state"><span class="dot"></span>Devam</span><span class="arr">→</span></span>
+        </a>
+        <a class="ledger-row" href="grand-corner.html" data-status="devam" data-type="karsiyaka">
+          <span class="ledger-no">PRJ—003</span>
+          <span class="ledger-title">Karşıyaka Anadolu Caddesi</span>
+          <span class="ledger-meta"><span>Karşıyaka · İzmir</span><span>Konut</span></span>
+          <span class="ledger-end"><span class="ledger-state"><span class="dot"></span>Devam</span><span class="arr">→</span></span>
+        </a>
+        <a class="ledger-row" href="grand-corner.html" data-status="tamam" data-type="karabaglar">
+          <span class="ledger-no">PRJ—004</span>
+          <span class="ledger-title">Yeşilyurt Bozyaka</span>
+          <span class="ledger-meta"><span>Karabağlar · Yeşilyurt</span><span>Konut</span></span>
+          <span class="ledger-end"><span class="ledger-state done"><span class="dot"></span>Teslim</span><span class="arr">→</span></span>
+        </a>
+        <a class="ledger-row" href="grand-corner.html" data-status="tamam" data-type="karabaglar">
+          <span class="ledger-no">PRJ—005</span>
+          <span class="ledger-title">Üzümcü Okulu Projesi</span>
+          <span class="ledger-meta"><span>Karabağlar · Yeşilyurt</span><span>Konut</span></span>
+          <span class="ledger-end"><span class="ledger-state done"><span class="dot"></span>Teslim</span><span class="arr">→</span></span>
+        </a>
+        <a class="ledger-row" href="grand-corner.html" data-status="tamam" data-type="menderes">
+          <span class="ledger-no">PRJ—006</span>
+          <span class="ledger-title">Menderes Çamönü Projesi</span>
+          <span class="ledger-meta"><span>Menderes · Çamönü</span><span>Konut</span></span>
+          <span class="ledger-end"><span class="ledger-state done"><span class="dot"></span>Teslim</span><span class="arr">→</span></span>
+        </a>
+        <a class="ledger-row" href="grand-corner.html" data-status="tamam" data-type="karabaglar">
+          <span class="ledger-no">PRJ—007</span>
+          <span class="ledger-title">Yaylacık 175 Sok.</span>
+          <span class="ledger-meta"><span>Karabağlar · Yaylacık</span><span>Konut</span></span>
+          <span class="ledger-end"><span class="ledger-state done"><span class="dot"></span>Teslim</span><span class="arr">→</span></span>
+        </a>
+        <a class="ledger-row" href="grand-corner.html" data-status="tamam" data-type="karabaglar">
+          <span class="ledger-no">PRJ—008</span>
+          <span class="ledger-title">Yaylacık 179 Sok.</span>
+          <span class="ledger-meta"><span>Karabağlar · Yaylacık</span><span>Konut</span></span>
+          <span class="ledger-end"><span class="ledger-state done"><span class="dot"></span>Teslim</span><span class="arr">→</span></span>
+        </a>
+        <a class="ledger-row" href="grand-corner.html" data-status="tamam" data-type="menemen">
+          <span class="ledger-no">PRJ—009</span>
+          <span class="ledger-title">Menemen Seyrek İnşaatı</span>
+          <span class="ledger-meta"><span>Menemen · Seyrek</span><span>Konut</span></span>
+          <span class="ledger-end"><span class="ledger-state done"><span class="dot"></span>Teslim</span><span class="arr">→</span></span>
+        </a>
+        <a class="ledger-row" href="grand-corner.html" data-status="tamam" data-type="buca">
+          <span class="ledger-no">PRJ—010</span>
+          <span class="ledger-title">Buca Gediz Projesi</span>
+          <span class="ledger-meta"><span>Buca · Gediz</span><span>Konut</span></span>
+          <span class="ledger-end"><span class="ledger-state done"><span class="dot"></span>Teslim</span><span class="arr">→</span></span>
+        </a>
+        <a class="ledger-row" href="grand-corner.html" data-status="tamam" data-type="marmaris">
+          <span class="ledger-no">PRJ—011</span>
+          <span class="ledger-title">Marmaris Projesi</span>
+          <span class="ledger-meta"><span>Marmaris · Muğla</span><span>Konut</span></span>
+          <span class="ledger-end"><span class="ledger-state done"><span class="dot"></span>Teslim</span><span class="arr">→</span></span>
+        </a>
+        <a class="ledger-row" href="grand-corner.html" data-status="tamam" data-type="karabaglar">
+          <span class="ledger-no">PRJ—012</span>
+          <span class="ledger-title">Yeşilyurt Proje 1</span>
+          <span class="ledger-meta"><span>Karabağlar · Yeşilyurt</span><span>Konut</span></span>
+          <span class="ledger-end"><span class="ledger-state done"><span class="dot"></span>Teslim</span><span class="arr">→</span></span>
+        </a>
+      </div>
+
+      <div style="margin-top: 64px; text-align: center;">
+        <a href="#" class="btn btn-outline btn-lg">Eski / Arşiv Projeleri İncele <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" hidden>
+    <div class="container row reveal">
+      <div>
+        <div class="eyebrow" style="color: var(--c-accent-2);">Yeni bir proje mi düşünüyorsunuz?</div>
+        <h2 style="margin-top:18px;">Arsanız için ön değerlendirme isteyin.</h2>
+      </div>
+      <div class="actions">
+        <a href="iletisim.html" class="btn btn-primary btn-lg">İletişime Geç <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<style>
+@media (max-width: 960px) {
+  .prjhead { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .geo-filter { display: none; }
+}
+@media (max-width: 768px) {
+  .desktop-only { display: none !important; }
+  .page-hero { padding-block: 40px 48px !important; }
+  .prjhead { margin-top: 16px !important; gap: 40px !important; }
+  .page-hero + .section-sm { padding-top: 0 !important; }
+  .filter-bar { border-top: none !important; }
+}
+@media (min-width: 769px) {
+  .mobile-only { display: none !important; }
+}
+</style>
+
+<script src="../assets/page.js"></script>
+<script>window.IzgencMount("projects");</script>
+<script>
+(function () {
+  var grid = document.querySelector(".projects-grid[data-filterable]");
+  var ledger = document.getElementById("prj-ledger");
+  var count = document.getElementById("shown-count");
+  var toggles = document.querySelectorAll(".view-toggle button");
+
+  /* Görünüm anahtarı: Galeri / Endeks */
+  toggles.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      toggles.forEach(function (b) { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
+      btn.classList.add("active"); btn.setAttribute("aria-selected", "true");
+      var ledgerOn = btn.dataset.view === "ledger";
+      grid.style.display = ledgerOn ? "none" : "";
+      ledger.hidden = !ledgerOn;
+    });
+  });
+
+  /* Aktif filtreyi endekse + sayaca da uygula (page.js griddeki işini yaptıktan sonra) */
+  function applyToLedger(filter) {
+    var shown = 0;
+    ledger.querySelectorAll(".ledger-row").forEach(function (r) {
+      var ok = !filter || filter === "all" || r.dataset.status === filter || r.dataset.type === filter;
+      r.style.display = ok ? "" : "none";
+      if (ok) shown++;
+    });
+    if (count) count.textContent = String(shown).padStart(2, "0");
+  }
+  document.querySelectorAll(".filter-group .chip").forEach(function (chip) {
+    chip.addEventListener("click", function () { applyToLedger(chip.dataset.filter); });
+  });
+
+  /* Harita pinleri: ilgili chip'i tetikler; aktif pini işaretle */
+  var pins = document.querySelectorAll(".geo-pin");
+  pins.forEach(function (pin) {
+    function fire() {
+      var f = pin.dataset.filter;
+      var already = pin.classList.contains("active");
+      pins.forEach(function (p) { p.classList.remove("active"); });
+      var target = already ? "all" : f;
+      if (!already) pin.classList.add("active");
+      var chip = document.querySelector('.chip[data-filter="' + target + '"]');
+      if (chip) chip.click();
+      else { /* lokasyon chip'i yoksa yine de uygula */ applyToLedger(target); }
+    }
+    pin.addEventListener("click", fire);
+    pin.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fire(); } });
+  });
+
+  /* Chip tıklanınca pin durumunu eşitle */
+  document.querySelectorAll(".filter-group .chip").forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      pins.forEach(function (p) { p.classList.toggle("active", p.dataset.filter === chip.dataset.filter); });
+    });
+  });
+})();
+</script>
+</body>
+</html>
