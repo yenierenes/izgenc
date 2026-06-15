@@ -1,0 +1,338 @@
+/* ============================================================= */
+/* İzgenç Yapı — "Planlı Süreç, Katman Katman Değer"             */
+/* Yalnız bu section'a scope'lu premium scroll deneyimi          */
+/* ============================================================= */
+
+.process-build {
+  --pb-bg-dark: #14171A;
+  --pb-bg-2:    #1B1F23;
+  --pb-stone:   #E7DECE;
+  --pb-sand:    #C6B69C;
+  --pb-muted:   #97907F;
+  --pb-copper:  #BE6A40;
+  --pb-brass:   #917F5A;
+  --pb-line:    rgba(145, 127, 90, 0.28);
+  --pb-blueprint: rgba(214, 203, 184, 0.16);
+  --pb-ease: cubic-bezier(.22,.7,.2,1);
+
+  position: relative;
+  isolation: isolate;
+  background: var(--pb-bg-dark);
+  color: var(--pb-stone);
+  overflow: clip;
+}
+
+/* ---- Atmosfer / arka plan ---- */
+.process-build__bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 72% 38%, rgba(190, 106, 64, 0.10) 0%, rgba(190,106,64,0) 46%),
+    radial-gradient(90% 80% at 50% 0%, rgba(145, 127, 90, 0.06) 0%, rgba(145, 127, 90,0) 55%),
+    linear-gradient(180deg, #161A1D 0%, #121417 100%);
+}
+.process-build__bg::after {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--pb-blueprint) 1px, transparent 1px),
+    linear-gradient(90deg, var(--pb-blueprint) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(80% 70% at 60% 45%, #000 0%, transparent 75%);
+          mask-image: radial-gradient(80% 70% at 60% 45%, #000 0%, transparent 75%);
+  opacity: 0.5;
+}
+
+/* ---- Layout ---- */
+.process-build__inner {
+  position: relative; z-index: 1;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 72px var(--gutter, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.process-build__content {
+  position: relative; max-width: 600px;
+  display: flex; flex-direction: column; gap: 24px;
+}
+.process-build__dynamic { position: relative; }
+
+/* Mobil/tablet akış sırası: bina → metin → adımlar → CTA */
+@media (max-width: 1023px) {
+  .process-build__content { display: contents; }
+  .process-build__visual { order: 0; }
+  .process-build__head { order: 1; }
+  .process-build__steps { order: 2; }
+  .process-build__dynamic { order: 3; }
+}
+
+/* Enhanced (desktop pinned): panel ve CTA aynı alanı paylaşır */
+.process-build.is-enhanced .process-build__dynamic { min-height: 200px; }
+.process-build.is-enhanced .process-build__cta {
+  position: absolute; top: 0; left: 0; right: 0; margin-top: 0;
+}
+.process-build.is-enhanced .process-build__panel {
+  transition: opacity 0.45s var(--pb-ease);
+}
+.process-build.is-enhanced .process-build__panel.is-hidden {
+  opacity: 0; pointer-events: none;
+}
+
+.process-build__eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--pb-brass);
+  margin: 0 0 18px;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.process-build__eyebrow::before {
+  content: ""; width: 22px; height: 1px; background: var(--pb-brass); opacity: .7;
+}
+.process-build__headline {
+  font-family: var(--font-serif, serif);
+  font-weight: 400;
+  font-size: clamp(28px, 2.9vw, 46px);
+  line-height: 1.07;
+  letter-spacing: -0.02em;
+  color: var(--pb-stone);
+  margin: 0;
+  max-width: 17ch;
+}
+.process-build__headline em { font-style: italic; color: var(--pb-brass); }
+.process-build__copy {
+  margin: 16px 0 0;
+  color: var(--pb-muted);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.6;
+  max-width: 44ch;
+}
+
+/* ---- Aktif step paneli (yalnız desktop enhanced) ---- */
+.process-build__panel { display: none; margin: 0; min-height: 0; }
+.process-build.is-enhanced .process-build__panel { display: block; }
+.process-build__active-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--pb-brass);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.process-build__active-tag::before {
+  content: ""; width: 18px; height: 1px; background: var(--pb-brass); opacity: 0.7;
+}
+.process-build__active-title {
+  font-family: var(--font-serif, serif);
+  font-weight: 400; font-size: clamp(20px, 1.7vw, 26px);
+  line-height: 1.15; color: var(--pb-stone);
+  margin: 14px 0 0;
+}
+.process-build__active-text {
+  margin: 10px 0 0; color: var(--pb-muted);
+  font-size: 15px; line-height: 1.55; max-width: 40ch;
+}
+
+/* ---- Step rail ---- */
+.process-build__steps {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex; flex-direction: column; gap: 15px;
+}
+.process-build__progress {
+  position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px;
+  background: rgba(216, 205, 187, 0.14);
+  border-radius: 2px; overflow: hidden;
+}
+.process-build__progress-fill {
+  position: absolute; left: 0; top: 0; width: 100%;
+  height: calc(var(--pb-progress, 0) * 100%);
+  background: linear-gradient(180deg, var(--pb-copper), var(--pb-brass));
+}
+.process-build__step {
+  position: relative;
+  display: grid; grid-template-columns: 16px 1fr; gap: 20px; align-items: start;
+  opacity: 1; transition: opacity 0.45s var(--pb-ease);
+}
+/* Soluklaştırma yalnızca desktop pinned (enhanced) modda */
+.process-build.is-enhanced .process-build__step { opacity: 0.45; }
+.process-build.is-enhanced .process-build__step.is-done { opacity: 0.72; }
+.process-build.is-enhanced .process-build__step.is-active { opacity: 1; }
+.process-build__step-node {
+  justify-self: center;
+  width: 12px; height: 12px; margin-top: 5px;
+  border-radius: 50%;
+  background: var(--pb-bg-dark);
+  border: 2px solid rgba(216, 205, 187, 0.35);
+  transition: all 0.45s var(--pb-ease);
+}
+.process-build__step.is-active .process-build__step-node,
+.process-build__step.is-done .process-build__step-node {
+  border-color: var(--pb-brass); background: var(--pb-brass);
+}
+.process-build__step.is-active .process-build__step-node {
+  box-shadow: 0 0 0 4px rgba(145, 127, 90, 0.18);
+}
+.process-build__step-dot {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px; letter-spacing: 0.14em; color: var(--pb-brass);
+  display: block; margin-bottom: 4px;
+}
+.process-build__step-title {
+  font-family: var(--font-serif, serif);
+  font-weight: 400; font-size: 17px; line-height: 1.25;
+  color: var(--pb-stone); margin: 0;
+}
+.process-build__step.is-active .process-build__step-title { color: #FFF8EC; }
+.process-build__step-copy {
+  margin: 8px 0 0; color: var(--pb-muted);
+  font-size: 14px; line-height: 1.6; max-width: 46ch;
+}
+/* Desktop enhanced: rail kompakt (açıklama panele taşınır) */
+.process-build.is-enhanced .process-build__step-copy { display: none; }
+
+/* ---- CTA ---- */
+.process-build__cta {
+  margin-top: 0;
+  padding: 24px 26px;
+  border: 1px solid var(--pb-line);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(145, 127, 90,0.07), rgba(145, 127, 90,0.01));
+  max-width: 520px;
+}
+.process-build.is-enhanced .process-build__cta {
+  opacity: 0; transform: translateY(18px); pointer-events: none;
+  transition: opacity 0.6s var(--pb-ease), transform 0.6s var(--pb-ease);
+}
+.process-build.is-enhanced .process-build__cta.is-revealed {
+  opacity: 1; transform: none; pointer-events: auto;
+}
+.process-build__cta-title {
+  font-family: var(--font-serif, serif);
+  font-weight: 400; font-size: 24px; line-height: 1.2;
+  color: var(--pb-stone); margin: 0;
+}
+.process-build__cta-text {
+  margin: 10px 0 0; color: var(--pb-muted); font-size: 14px; line-height: 1.6;
+}
+.process-build__cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 22px;
+  padding: 14px 26px; border-radius: 999px;
+  background: var(--c-accent); color: #FFFDF8;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.01em;
+  transition: background 0.2s var(--pb-ease), transform 0.2s var(--pb-ease);
+}
+.process-build__cta-btn .arr { transition: transform 0.22s var(--pb-ease); }
+.process-build__cta-btn:hover { background: var(--c-accent-hover); }
+.process-build__cta-btn:hover .arr { transform: translateX(4px); }
+.process-build__cta-btn:focus-visible { outline: 2px solid var(--pb-brass); outline-offset: 3px; }
+
+/* ---- Görsel sahne ---- */
+.process-build__visual {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.process-build__stage {
+  position: relative;
+  width: 100%; max-width: 560px;
+}
+.process-build__stage::before {
+  content: ""; position: absolute; inset: -6% -4% -10% -4%;
+  background: radial-gradient(60% 55% at 55% 42%, rgba(145, 127, 90,0.12), rgba(145, 127, 90,0) 70%);
+  z-index: 0; pointer-events: none;
+}
+.process-build__svg {
+  position: relative; z-index: 1;
+  width: 100%; height: auto;
+  filter: drop-shadow(0 26px 44px rgba(0,0,0,0.5));
+  overflow: visible;
+}
+.process-build__svg polygon,
+.process-build__svg line,
+.process-build__svg path { transform-box: fill-box; transform-origin: 50% 50%; }
+.process-build__svg .pb-draw { stroke-linejoin: round; }
+
+/* ============================================================= */
+/* Desktop (≥ 1024px): pinned sahne                              */
+/* ============================================================= */
+@media (min-width: 1024px) {
+  .process-build__inner {
+    display: grid;
+    grid-template-columns: minmax(400px, 0.96fr) 1.04fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "content visual"
+      "content steps";
+    column-gap: 54px;
+    row-gap: 4px;
+    min-height: 100vh;
+    align-content: center;
+    padding: 144px var(--gutter, 32px) 40px;
+  }
+  .process-build__content { grid-area: content; align-self: center; max-width: 520px; margin-top: 24px; }
+  .process-build__visual { grid-area: visual; align-self: center; }
+  .process-build__steps { grid-area: steps; align-self: start; }
+  .process-build__stage { max-width: 600px; margin-left: auto; margin-right: 0; }
+
+  /* Step rail → binanın altında yatay */
+  .process-build__steps {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 0 0 0 auto;
+    padding-top: 6px;
+    max-width: 600px;
+  }
+  .process-build__progress {
+    left: 10%; right: 10%; top: 11px; bottom: auto; width: auto; height: 2px;
+  }
+  .process-build__progress-fill {
+    height: 100%; width: calc(var(--pb-progress, 0) * 100%);
+    background: linear-gradient(90deg, var(--pb-copper), var(--pb-brass));
+  }
+  .process-build__step {
+    grid-template-columns: none;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    flex: 1 1 0; min-width: 0; gap: 0;
+  }
+  .process-build__step-node { margin: 0 0 14px; }
+  .process-build__step-copy { display: none !important; }
+  .process-build__step-title { font-size: 12.5px; line-height: 1.3; max-width: 15ch; }
+}
+
+/* ============================================================= */
+/* Tablet (768–1023): normal akış, sahne üstte                  */
+/* ============================================================= */
+@media (max-width: 1023px) {
+  .process-build__inner { padding-block: 72px; }
+  .process-build__stage { max-width: 460px; }
+  .process-build__panel { display: none !important; }
+}
+
+/* ============================================================= */
+/* Mobil (< 768px)                                              */
+/* ============================================================= */
+@media (max-width: 767px) {
+  .process-build__inner { padding: 56px 20px; gap: 36px; }
+  .process-build__stage { max-width: 360px; }
+  .process-build__steps { gap: 22px; }
+  .process-build__cta { padding: 24px 22px; }
+}
+
+/* ============================================================= */
+/* Reduced motion / statik fallback                             */
+/* ============================================================= */
+.process-build.is-static .process-build__layer,
+.process-build.is-static .process-build__cta,
+.process-build.is-static .process-build__step { opacity: 1 !important; transform: none !important; }
+.process-build.is-static .process-build__progress-fill { height: 100% !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .process-build__progress-fill,
+  .process-build__step,
+  .process-build__step-node,
+  .process-build__cta { transition: none !important; }
+}
