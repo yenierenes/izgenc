@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hakkımızda — İzgenç Yapı</title>
+  <meta name="description" content="İzgenç Yapı — 1993'ten bugüne, İzmir merkezli yapı uzmanlığı; vizyon, misyon ve değerlerimiz.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,0..100&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/history.css">
+  <style>
+    /* Ankesörlü telefon — doğrudan arama butonu (koyu bandda gold çizim) */
+    .payphone-btn { display: inline-flex; align-items: center; gap: 14px; padding: 13px 22px; border: 1px solid rgba(255,253,248,0.5); color: #FFFDF8; text-decoration: none; border-radius: 2px; line-height: 1.1; transition: background .22s var(--ease), color .22s var(--ease), transform .22s var(--ease), border-color .22s var(--ease); }
+    .payphone-btn:hover { background: #FFFDF8; color: var(--c-ink); border-color: #FFFDF8; transform: translateY(-2px); }
+    .payphone-btn__ic { flex: 0 0 auto; display: flex; }
+    .payphone-btn__ic svg { width: 30px; height: 32px; overflow: visible; }
+    .payphone-btn .pp-line { stroke: var(--c-accent-2); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .payphone-btn .pp-gold { stroke: var(--c-accent-2); stroke-width: 1.6; fill: none; stroke-linecap: round; }
+    .payphone-btn .pp-soft { stroke: var(--c-accent-2); stroke-width: 1.3; fill: none; opacity: .55; }
+    .payphone-btn .pp-keys circle { fill: var(--c-accent-2); }
+    .payphone-btn:hover .pp-line, .payphone-btn:hover .pp-gold, .payphone-btn:hover .pp-soft { stroke: var(--c-ink); }
+    .payphone-btn:hover .pp-keys circle { fill: var(--c-ink); }
+    .payphone-btn__txt { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+    .payphone-btn__k { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; opacity: .72; }
+    .payphone-btn__v { font-family: var(--font-sans); font-weight: 700; font-size: 15px; letter-spacing: .01em; }
+    .pp-shake { transform-box: fill-box; transform-origin: center; }
+    .pp-waves { transform-box: fill-box; transform-origin: left center; opacity: 0; }
+    .payphone-btn:hover .pp-shake { animation: ppRing .65s var(--ease); }
+    .payphone-btn:hover .pp-waves { animation: ppWave .8s var(--ease) infinite; }
+    @keyframes ppRing { 0%,100%{transform:rotate(0)} 14%{transform:rotate(-9deg)} 28%{transform:rotate(8deg)} 42%{transform:rotate(-6deg)} 58%{transform:rotate(5deg)} 74%{transform:rotate(-3deg)} 88%{transform:rotate(1deg)} }
+    @keyframes ppWave { 0%{opacity:.15;transform:scale(.8)} 50%{opacity:1;transform:scale(1)} 100%{opacity:.15;transform:scale(.8)} }
+    @media (prefers-reduced-motion: reduce) { .payphone-btn:hover .pp-shake { animation: none; } .payphone-btn:hover .pp-waves { animation: none; opacity: 1; } }
+  </style>
+</head>
+<body data-screen-label="02 Hakkımızda">
+
+<main>
+  <!-- ============== BANNER ============== -->
+  <div class="hero-banner">
+    <div class="hero-banner-media">
+      <div class="hero-slide is-active">
+        <img src="../görsel%20vs/izgenc_izlife.webp" alt="İzgenç İzlife Projesi">
+      </div>
+      <div class="hero-banner-scrim"></div>
+      <div class="hero-banner-text">
+        <div class="container">
+          <nav class="breadcrumb" aria-label="Sayfa yolu" style="color: rgba(255,253,248,0.7); margin-bottom: 28px;">
+            <a href="anasayfa.html" style="color: rgba(255,253,248,0.82);">Ana Sayfa</a>
+            <span class="sep" style="color: rgba(255,253,248,0.4);">/</span>
+            <span>Hakkımızda</span>
+          </nav>
+          <div class="hero-banner-inner reveal">
+            <h1 class="about-title"><span class="title-l1">30 yıllık tecrübeyle</span><em class="title-l2">geleceği</em>inşa ediyoruz.</h1>
+            <p class="lede">1993'te Marmaris'te başlayan yolculuğumuzu, tamamı yerli sermayeye dayanan güçlü yapımız ve 200'den fazla tamamlanan projemizle sürdürüyoruz. İzmir merkezli yaklaşımımızla; güven, kalite ve şeffaf süreç yönetimini modern mimariyle bir araya getiriyoruz.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== STORY ============== -->
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start;" class="storygrid">
+        <img class="story-watermark" src="../assets/logo.png" alt="" aria-hidden="true">
+        <aside style="position: sticky; top: 140px;">
+          <div class="eyebrow">Kuruluş Hikayesi</div>
+          <h2 style="margin-top: 18px; max-width: 14ch;">Yerel bilgi, kurumsal disiplin.</h2>
+        </aside>
+        <div>
+          <p style="font-size: 21px; line-height: 1.55; color: var(--c-ink-2); max-width: 60ch; font-family: var(--font-serif); font-weight: 300;">Yaratıcılık, kontrollü çalışma ve zaman yönetimi ilkesiyle…</p>
+          <p style="margin-top: 28px; font-size: 17px; line-height: 1.75; color: var(--c-ink-2); max-width: 60ch;">Firmamız, 1993 yılında Muğla'nın Marmaris ilçesinde kurulmuş olup; turizm, kuyumculuk ve dericilik sektörlerinde faaliyet göstermiştir. 1999 yılında inşaat sektörüne dev bir yatırımla giriş yapan İzgenç Yapı, bugüne kadar tamamladığı 200'den fazla proje ile sektörde güven ve kaliteyi bir araya getirmiştir.</p>
+          <p style="margin-top: 20px; font-size: 17px; line-height: 1.75; color: var(--c-ink-2); max-width: 60ch;">İnşaat sektöründe başarıyı belirleyen proje yönetimi, iş güvenliği, uzman kadro, usta işçilik ve kaliteli malzeme konularında titizlikle çalışmayı ilke edinen firmamız; müşteri memnuniyeti odaklı bir hizmet anlayışını benimsemiştir.</p>
+          <p style="margin-top: 20px; font-size: 17px; line-height: 1.75; color: var(--c-ink-2); max-width: 60ch;">2020 yılından itibaren cam sanayi faaliyetlerini de bünyesine ekleyen İzgenç Yapı; yenilikçi vizyonuyla, 30 yılı aşkın süredir tamamı yerli sermaye ile Türkiye'de mimariye yön vermeye devam etmektedir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== ZAMAN ÇİZELGESİ — Kurumsal Hafıza ============== -->
+  <section class="history-experience" aria-labelledby="he-title" data-active-index="0">
+    <div class="history-experience__inner">
+    <div class="history-experience__bg" aria-hidden="true">
+      <div class="history-experience__layer he-layer--origin" data-theme="origin" aria-hidden="true"><svg class="history-experience__svg" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><g class="he-sea" fill="none" stroke="rgba(216,205,187,0.18)" stroke-width="1.2"><line x1="120" y1="382" x2="880" y2="382"/></g><g class="he-sea" fill="none" stroke="rgba(216,205,187,0.10)" stroke-width="1"><path d="M150,416 q40,-11 80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0"/><path d="M150,446 q40,-11 80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0"/><path d="M150,476 q40,-11 80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0"/></g><path class="he-sea" d="M120,332 C320,302 520,346 880,316" fill="none" stroke="rgba(216,205,187,0.18)" stroke-width="1.2"/><path class="he-sea" d="M250,382 a72,72 0 0 1 144,0" fill="none" stroke="rgba(216,205,187,0.10)" stroke-width="1"/><g class="he-pin"><g transform="translate(576.8 272.8) scale(3.6)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="none" stroke="#917F5A" stroke-width="0.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="12" cy="9" r="2.7" fill="none" stroke="#917F5A" stroke-width="0.5"/><circle cx="12" cy="9" r="0.9" fill="#917F5A"/></g><ellipse class="he-ring" cx="620" cy="362" rx="15" ry="4" fill="none" stroke="rgba(216,205,187,0.18)" stroke-width="1.2"/></g><text class="he-pin-label" x="620" y="244" text-anchor="middle" font-family="Fraunces, serif" font-size="30" fill="rgba(216,205,187,0.30)">Marmaris</text></svg></div>
+      <div class="history-experience__layer he-layer--construction" data-theme="construction" aria-hidden="true"><svg class="history-experience__svg" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><g class="he-slide"><rect x="300" y="392" width="64" height="130" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.5" stroke-linejoin="round"/><rect x="297" y="385" width="70" height="7" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.5"/><g stroke="rgba(216,205,187,0.10)" stroke-width="1"><line x1="304" y1="418" x2="360" y2="418"/><line x1="304" y1="446" x2="360" y2="446"/><line x1="304" y1="474" x2="360" y2="474"/><line x1="304" y1="502" x2="360" y2="502"/><line x1="326" y1="396" x2="326" y2="522"/><line x1="345" y1="396" x2="345" y2="522"/></g><rect x="372" y="300" width="80" height="222" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.5" stroke-linejoin="round"/><rect x="369" y="293" width="86" height="7" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.5"/><g stroke="rgba(216,205,187,0.10)" stroke-width="1"><line x1="376" y1="326" x2="448" y2="326"/><line x1="376" y1="354" x2="448" y2="354"/><line x1="376" y1="382" x2="448" y2="382"/><line x1="376" y1="410" x2="448" y2="410"/><line x1="376" y1="438" x2="448" y2="438"/><line x1="376" y1="466" x2="448" y2="466"/><line x1="376" y1="494" x2="448" y2="494"/><line x1="404" y1="304" x2="404" y2="522"/><line x1="428" y1="304" x2="428" y2="522"/></g><rect x="462" y="168" width="92" height="354" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.8" stroke-linejoin="round"/><rect x="459" y="161" width="98" height="7" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.8"/><g stroke="rgba(216,205,187,0.10)" stroke-width="1"><line x1="466" y1="194" x2="550" y2="194"/><line x1="466" y1="222" x2="550" y2="222"/><line x1="466" y1="250" x2="550" y2="250"/><line x1="466" y1="278" x2="550" y2="278"/><line x1="466" y1="306" x2="550" y2="306"/><line x1="466" y1="334" x2="550" y2="334"/><line x1="466" y1="362" x2="550" y2="362"/><line x1="466" y1="390" x2="550" y2="390"/><line x1="466" y1="418" x2="550" y2="418"/><line x1="466" y1="446" x2="550" y2="446"/><line x1="466" y1="474" x2="550" y2="474"/><line x1="466" y1="502" x2="550" y2="502"/><line x1="499" y1="172" x2="499" y2="522"/><line x1="526" y1="172" x2="526" y2="522"/></g><line x1="462" y1="168" x2="462" y2="522" stroke="#917F5A" stroke-width="1.8"/><line x1="459" y1="161" x2="557" y2="161" stroke="#917F5A" stroke-width="1.6"/><rect x="566" y="338" width="74" height="184" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.5" stroke-linejoin="round"/><rect x="563" y="331" width="80" height="7" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.5"/><g stroke="rgba(216,205,187,0.10)" stroke-width="1"><line x1="570" y1="364" x2="636" y2="364"/><line x1="570" y1="392" x2="636" y2="392"/><line x1="570" y1="420" x2="636" y2="420"/><line x1="570" y1="448" x2="636" y2="448"/><line x1="570" y1="476" x2="636" y2="476"/><line x1="570" y1="504" x2="636" y2="504"/><line x1="596" y1="342" x2="596" y2="522"/><line x1="618" y1="342" x2="618" y2="522"/></g><rect x="650" y="246" width="70" height="276" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.5" stroke-linejoin="round"/><rect x="647" y="239" width="76" height="7" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.5"/><g stroke="rgba(216,205,187,0.10)" stroke-width="1"><line x1="654" y1="272" x2="716" y2="272"/><line x1="654" y1="300" x2="716" y2="300"/><line x1="654" y1="328" x2="716" y2="328"/><line x1="654" y1="356" x2="716" y2="356"/><line x1="654" y1="384" x2="716" y2="384"/><line x1="654" y1="412" x2="716" y2="412"/><line x1="654" y1="440" x2="716" y2="440"/><line x1="654" y1="468" x2="716" y2="468"/><line x1="654" y1="496" x2="716" y2="496"/><line x1="678" y1="250" x2="678" y2="522"/><line x1="699" y1="250" x2="699" y2="522"/></g><rect x="732" y="404" width="58" height="118" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.5" stroke-linejoin="round"/><rect x="729" y="397" width="64" height="7" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.5"/><g stroke="rgba(216,205,187,0.10)" stroke-width="1"><line x1="736" y1="430" x2="786" y2="430"/><line x1="736" y1="458" x2="786" y2="458"/><line x1="736" y1="486" x2="786" y2="486"/><line x1="755" y1="408" x2="755" y2="522"/><line x1="773" y1="408" x2="773" y2="522"/></g></g><line x1="270" y1="522" x2="762" y2="522" stroke="rgba(216,205,187,0.18)" stroke-width="1.4"/></svg></div>
+      <div class="history-experience__layer he-layer--glass" data-theme="glass" aria-hidden="true"><svg class="history-experience__svg" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="rgba(216,205,187,0.18)" stroke-width="1"><line x1="70.0" y1="70" x2="70.0" y2="580"/><line x1="141.7" y1="70" x2="141.7" y2="580"/><line x1="213.3" y1="70" x2="213.3" y2="580"/><line x1="285.0" y1="70" x2="285.0" y2="580"/><line x1="356.7" y1="70" x2="356.7" y2="580"/><line x1="428.3" y1="70" x2="428.3" y2="580"/><line x1="500.0" y1="70" x2="500.0" y2="580"/><line x1="571.7" y1="70" x2="571.7" y2="580"/><line x1="643.3" y1="70" x2="643.3" y2="580"/><line x1="715.0" y1="70" x2="715.0" y2="580"/><line x1="786.7" y1="70" x2="786.7" y2="580"/><line x1="858.3" y1="70" x2="858.3" y2="580"/><line x1="930.0" y1="70" x2="930.0" y2="580"/><line x1="70" y1="70.0" x2="930" y2="70.0"/><line x1="70" y1="121.0" x2="930" y2="121.0"/><line x1="70" y1="172.0" x2="930" y2="172.0"/><line x1="70" y1="223.0" x2="930" y2="223.0"/><line x1="70" y1="274.0" x2="930" y2="274.0"/><line x1="70" y1="325.0" x2="930" y2="325.0"/><line x1="70" y1="376.0" x2="930" y2="376.0"/><line x1="70" y1="427.0" x2="930" y2="427.0"/><line x1="70" y1="478.0" x2="930" y2="478.0"/><line x1="70" y1="529.0" x2="930" y2="529.0"/><line x1="70" y1="580.0" x2="930" y2="580.0"/></g><rect x="70" y="70" width="860" height="510" fill="none" stroke="rgba(216,205,187,0.30)" stroke-width="1.4"/><g stroke-linecap="round"><line x1="200" y1="90" x2="520" y2="560" stroke="rgba(216,205,187,0.16)" stroke-width="2"/><line x1="320" y1="90" x2="660" y2="560" stroke="rgba(145, 127, 90,0.12)" stroke-width="1.4"/></g><line x1="70" y1="70" x2="930" y2="70" stroke="#917F5A" stroke-width="1.6"/><g class="he-panels"><rect class="he-panel he-from-l" x="145.7" y="125.0" width="63.7" height="43.0" rx="1" fill="rgba(145, 127, 90,0.13)" stroke="#917F5A" stroke-width="1.4"/><rect class="he-panel he-from-r" x="432.3" y="176.0" width="63.7" height="43.0" rx="1" fill="rgba(145, 127, 90,0.13)" stroke="#917F5A" stroke-width="1.4"/><rect class="he-panel he-from-l" x="719.0" y="125.0" width="63.7" height="43.0" rx="1" fill="rgba(145, 127, 90,0.13)" stroke="#917F5A" stroke-width="1.4"/><rect class="he-panel he-from-r" x="289.0" y="278.0" width="63.7" height="43.0" rx="1" fill="rgba(145, 127, 90,0.13)" stroke="#917F5A" stroke-width="1.4"/><rect class="he-panel he-from-l" x="575.7" y="329.0" width="63.7" height="43.0" rx="1" fill="rgba(145, 127, 90,0.13)" stroke="#917F5A" stroke-width="1.4"/><rect class="he-panel he-from-r" x="790.7" y="380.0" width="63.7" height="43.0" rx="1" fill="rgba(145, 127, 90,0.13)" stroke="#917F5A" stroke-width="1.4"/><rect class="he-panel he-from-l" x="217.3" y="431.0" width="63.7" height="43.0" rx="1" fill="rgba(145, 127, 90,0.13)" stroke="#917F5A" stroke-width="1.4"/><rect class="he-panel he-from-r" x="504.0" y="482.0" width="63.7" height="43.0" rx="1" fill="rgba(145, 127, 90,0.13)" stroke="#917F5A" stroke-width="1.4"/></g></svg></div>
+      <div class="history-experience__layer he-layer--today" data-theme="today" aria-hidden="true"><svg class="history-experience__svg" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><text class="he-bignum" x="500" y="430" text-anchor="middle" font-family="Fraunces, serif" font-weight="300" font-size="300" fill="rgba(231,222,206,0.045)" stroke="rgba(231,222,206,0.13)" stroke-width="1.4">200+</text><text class="he-bigcap" x="500" y="486" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="9" fill="rgba(216,205,187,0.18)">TAMAMLANAN PROJE</text><line class="he-bigcap" x1="380" y1="158" x2="620" y2="158" stroke="#917F5A" stroke-width="1.2"/></svg></div>
+    </div>
+
+      <div class="history-experience__intro reveal">
+        <div class="eyebrow">Zaman Çizelgesi</div>
+        <h2 id="he-title" class="history-experience__title">Yolculuğumuzdaki dönüm noktaları.</h2>
+        <p class="history-experience__lede">Kuruluştan bugüne; her dönem yeni bir yetkinlik ve sorumluluk getirdi.</p>
+      </div>
+
+      <div class="history-experience__stage">
+        <div class="history-experience__year" aria-hidden="true">
+          <span data-active-year>1993</span>
+          <span class="he-year-cap">İzgenç Yapı</span>
+        </div>
+
+        <div class="history-experience__rail">
+          <span class="history-experience__rail-line" aria-hidden="true"><i class="history-experience__rail-fill" data-rail-fill></i></span>
+
+          <div class="history-experience__milestone is-active" data-index="0" data-year="1993" data-theme="origin" data-tag="Kuruluş">
+            <span class="history-experience__node" aria-hidden="true"></span>
+            <div class="history-experience__mile-body">
+              <span class="history-experience__mile-year">1993</span>
+              <h3 class="history-experience__mile-title">Marmaris'te kuruluş</h3>
+              <p class="history-experience__mile-text">Muğla'nın Marmaris ilçesinde kurulan firma; turizm, kuyumculuk ve dericilik sektörlerinde faaliyet göstermiştir.</p>
+            </div>
+          </div>
+
+          <div class="history-experience__milestone" data-index="1" data-year="1999" data-theme="construction" data-tag="Sektöre giriş">
+            <span class="history-experience__node" aria-hidden="true"></span>
+            <div class="history-experience__mile-body">
+              <span class="history-experience__mile-year">1999</span>
+              <h3 class="history-experience__mile-title">İnşaat sektörüne giriş</h3>
+              <p class="history-experience__mile-text">Dev bir yatırımla inşaat sektörüne giriş; ilk projeler ve sahada uygulamalı tecrübenin kazanılması.</p>
+            </div>
+          </div>
+
+          <div class="history-experience__milestone" data-index="2" data-year="2020" data-theme="glass" data-tag="Cam sanayi">
+            <span class="history-experience__node" aria-hidden="true"></span>
+            <div class="history-experience__mile-body">
+              <span class="history-experience__mile-year">2020</span>
+              <h3 class="history-experience__mile-title">Cam sanayi faaliyetleri</h3>
+              <p class="history-experience__mile-text">Cephe ve doğrama kalitesini kontrol altına almak adına, cam sanayi faaliyetlerinin şirket bünyesine eklenmesi.</p>
+            </div>
+          </div>
+
+          <div class="history-experience__milestone" data-index="3" data-year="Bugün" data-theme="today" data-tag="Kurumsal olgunluk">
+            <span class="history-experience__node" aria-hidden="true"></span>
+            <div class="history-experience__mile-body">
+              <span class="history-experience__mile-year">Bugün</span>
+              <h3 class="history-experience__mile-title">Bugün</h3>
+              <p class="history-experience__mile-text">30 yılı aşkın süredir tamamı yerli sermaye ile; 200+ proje, İzmir'de güven ve kalite odaklı yapı.</p>
+              <span class="history-experience__mile-metric"><strong>200+</strong><span>tamamlanan proje</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="history-experience__panel" aria-hidden="true">
+          <span class="history-experience__panel-tag" data-active-tag>1993 — Kuruluş</span>
+          <h3 class="history-experience__panel-title" data-active-title>Marmaris'te kuruluş</h3>
+          <p class="history-experience__panel-text" data-active-text>Muğla'nın Marmaris ilçesinde kurulan firma; turizm, kuyumculuk ve dericilik sektörlerinde faaliyet göstermiştir.</p>
+          <div class="history-experience__metric" data-metric hidden><strong>200+</strong><span>tamamlanan proje · İzmir</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MİSYON / VİZYON ============== -->
+  <section class="section" style="background: var(--c-card);">
+    <div class="container">
+      <div class="vmgrid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--c-rule);">
+        <div style="padding: 56px 56px 56px 0; border-right: 1px solid var(--c-rule);">
+          <div class="eyebrow">Misyon</div>
+          <p style="margin-top: 22px; font-size: 18px; line-height: 1.75; color: var(--c-ink-2); max-width: 52ch;">İzgenç Yapı olarak misyonumuz; güvenli, estetik ve uzun ömürlü yaşam alanları inşa ederek her projede kullanıcıya, yatırımcıya ve bulunduğu çevreye değer katmaktır. Proje yönetiminden malzeme seçimine, uygulama kalitesinden teslim sonrası desteğe kadar tüm süreçleri şeffaf, planlı ve sorumluluk bilinciyle yürütürüz. 30 yılı aşkın tecrübemizi, güncel yapı standartları ve müşteri memnuniyeti odağıyla birleştirerek kalıcı çözümler üretiriz.</p>
+        </div>
+        <div style="padding: 56px 0 56px 56px;">
+          <div class="eyebrow">Vizyon</div>
+          <p style="margin-top: 22px; font-size: 18px; line-height: 1.75; color: var(--c-ink-2); max-width: 52ch;">Vizyonumuz; yerli sermaye gücümüz, köklü tecrübemiz ve yenilikçi yaklaşımımızla modern mimariye yön veren güvenilir yapı markalarından biri olmaktır. Sadece bugünün ihtiyaçlarına cevap veren değil, geleceğin yaşam standartlarını da gözeten projeler geliştirmeyi hedefleriz. Estetik, güvenlik, sürdürülebilirlik ve kaliteyi bir arada ele alarak İzgenç Yapı imzasını her projede daha güçlü bir değere dönüştürürüz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== ARA İLETİŞİM CTA ============== -->
+  <section class="contact-band">
+    <div class="contact-band-skyline" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,120 L0,82 L70,82 L70,52 L130,52 L130,92 L195,92 L195,40 L255,40 L255,72 L315,72 L315,30 L375,30 L375,86 L440,86 L440,56 L500,56 L500,20 L560,20 L560,76 L620,76 L620,46 L685,46 L685,96 L745,96 L745,36 L805,36 L805,66 L865,66 L865,26 L925,26 L925,82 L990,82 L990,50 L1050,50 L1050,90 L1110,90 L1110,40 L1170,40 L1170,72 L1230,72 L1230,30 L1290,30 L1290,86 L1355,86 L1355,56 L1415,56 L1415,78 L1440,78 L1440,120 Z"/></svg></div>
+    <div class="container reveal">
+      <div>
+        <div class="eyebrow">İletişim</div>
+        <h2>Projenizi birlikte değerlendirelim.</h2>
+      </div>
+      <div class="actions">
+        <a href="iletisim.html" class="btn btn-primary btn-lg">Randevu Al <span class="arr">→</span></a>
+        <a href="tel:+905359762022" class="payphone-btn" aria-label="Hemen ara: +90 535 976 20 22">
+          <span class="payphone-btn__ic" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <g class="pp-shake">
+                <rect x="2.6" y="8" width="3.4" height="13" rx="1.7" class="pp-line"/>
+                <path d="M5 21 q-0.4 3.2 3.4 3.6" class="pp-gold"/>
+                <rect x="8.5" y="3" width="16" height="26" rx="2.5" class="pp-line"/>
+                <line x1="17" y1="7" x2="21.5" y2="7" class="pp-gold"/>
+                <g class="pp-keys">
+                  <circle cx="12.5" cy="12" r="0.95"/><circle cx="16.5" cy="12" r="0.95"/><circle cx="20.5" cy="12" r="0.95"/>
+                  <circle cx="12.5" cy="16" r="0.95"/><circle cx="16.5" cy="16" r="0.95"/><circle cx="20.5" cy="16" r="0.95"/>
+                  <circle cx="12.5" cy="20" r="0.95"/><circle cx="16.5" cy="20" r="0.95"/><circle cx="20.5" cy="20" r="0.95"/>
+                </g>
+                <rect x="12.5" y="24.3" width="7" height="2" rx="1" class="pp-soft"/>
+              </g>
+              <g class="pp-waves">
+                <path d="M26 12 a4.5 4.5 0 0 1 0 9" class="pp-gold"/>
+                <path d="M28.5 9.5 a7.5 7.5 0 0 1 0 14" class="pp-gold"/>
+              </g>
+            </svg>
+          </span>
+          <span class="payphone-btn__txt">
+            <span class="payphone-btn__k">Hemen Ara</span>
+            <span class="payphone-btn__v">+90 535 976 20 22</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== DEĞERLERİMİZ (kompakt) ============== -->
+  <section class="section values-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Değerlerimiz</div>
+          <h2 style="margin-top:18px;">Her projede aynı duruş.</h2>
+        </div>
+      </div>
+
+      <div class="values-compact reveal">
+        <div class="val">
+          <h4>Güven</h4>
+          <p>Her projede açık, dürüst ve sorumluluk sahibi bir çalışma anlayışıyla ilerleriz.</p>
+          <span class="val__icon" aria-hidden="true"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><g transform="translate(24 24) scale(0.9) translate(-24 -24)"><path class="vk-line" d="M24,5 L40,10 L40,23 C40,33 33,40.5 24,44 C15,40.5 8,33 8,23 L8,10 Z" stroke-width="1.5"/><path class="vk-accent" d="M17,24 l5,5 l9,-11" stroke-width="1.7"/></g></svg></span>
+        </div>
+        <div class="val">
+          <h4>Kalite</h4>
+          <p>Malzeme seçiminden işçiliğe kadar tüm süreçlerde yüksek standartları esas alırız.</p>
+          <span class="val__icon" aria-hidden="true"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path class="vk-line" d="M15,11 L33,11 L39,18 L24,40 L9,18 Z" stroke-width="1.5"/><g class="vk-soft" stroke-width="1"><path d="M9,18 L39,18"/><path d="M19,18 L24,40"/><path d="M29,18 L24,40"/><path d="M15,11 L19,18"/><path d="M33,11 L29,18"/><path d="M19,18 L29,18"/></g><path class="vk-accent" d="M19,18 L24,11 L29,18" stroke-width="1.3"/></svg></span>
+        </div>
+        <div class="val">
+          <h4>Şeffaflık</h4>
+          <p>Planlama, uygulama ve teslim süreçlerini anlaşılır ve denetlenebilir şekilde yönetiriz.</p>
+          <span class="val__icon" aria-hidden="true"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect class="vk-soft" x="9" y="11" width="21" height="21" rx="2.5" stroke-width="1.3"/><rect class="vk-line" x="18" y="17" width="21" height="21" rx="2.5" stroke-width="1.5"/><path class="vk-accent" d="M22,22 L27,22" stroke-width="1.4"/></svg></span>
+        </div>
+        <div class="val">
+          <h4>Sürdürülebilirlik</h4>
+          <p>Geleceğe değer katan, güvenli ve uzun ömürlü yapılar üretmeyi hedefleriz.</p>
+          <span class="val__icon" aria-hidden="true"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><g transform="rotate(-20 24 24)"><path class="vk-line" d="M7,24 C16,11 32,11 41,24 C32,37 16,37 7,24 Z" stroke-width="1.5"/><path class="vk-accent" d="M10,24 L38,24" stroke-width="1.3"/><g class="vk-soft" stroke-width="0.9"><path d="M16,24 L13,19.5"/><path d="M16,24 L13,28.5"/><path d="M24,24 L20,18"/><path d="M24,24 L20,30"/><path d="M32,24 L28,19.5"/><path d="M32,24 L28,28.5"/></g></g></svg></span>
+        </div>
+        <div class="val">
+          <h4>Müşteri Memnuniyeti</h4>
+          <p>İhtiyaçları doğru anlayarak, satış öncesi ve sonrası tüm süreçlerde çözüm odaklı hareket ederiz.</p>
+          <span class="val__icon" aria-hidden="true"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path class="vk-line" d="M12,11 H36 a3.5,3.5 0 0 1 3.5,3.5 V28 a3.5,3.5 0 0 1 -3.5,3.5 H23 l-7,6 v-6 h-4 a3.5,3.5 0 0 1 -3.5,-3.5 V14.5 a3.5,3.5 0 0 1 3.5,-3.5 Z" stroke-width="1.5"/><path class="vk-accent" d="M17,21 l4,4 l9,-9" stroke-width="1.7"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slider = document.querySelector('.values-compact');
+      if (!slider) return;
+      
+      let scrollTimer;
+      let isHovered = false;
+
+      const startAutoScroll = () => {
+        // Only run on mobile viewport where slider is active
+        if (window.innerWidth > 768) return;
+        
+        scrollTimer = setInterval(() => {
+          if (isHovered) return;
+          // Find card width + gap dynamically
+          const card = slider.querySelector('.val');
+          if (!card) return;
+          const cardWidth = card.offsetWidth + 16;
+          
+          // Check if we reached the end
+          if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+            slider.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+          }
+        }, 3000);
+      };
+
+      slider.addEventListener('touchstart', () => isHovered = true, {passive: true});
+      slider.addEventListener('touchend', () => {
+        isHovered = false;
+        clearInterval(scrollTimer);
+        startAutoScroll();
+      }, {passive: true});
+
+      startAutoScroll();
+      
+      // Handle orientation/resize
+      window.addEventListener('resize', () => {
+        clearInterval(scrollTimer);
+        startAutoScroll();
+      });
+    });
+  </script>
+
+  <!-- ============== OFİS (solda görsel / sağda metin) ============== -->
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;" class="officegrid">
+        <div style="aspect-ratio: 5/6; background: var(--c-bg-2); overflow: hidden;">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop" alt="Ofis çalışma alanı" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div>
+          <div class="eyebrow">Ofis</div>
+          <h2 style="margin-top: 18px; max-width: 16ch;">Buca'daki ofisimizde tanışalım.</h2>
+          <p style="margin-top: 24px; color: var(--c-ink-2); font-size: 17px; line-height: 1.7; max-width: 50ch;">Saha ekibimizden mimarlarımıza, satış ekibimizden hukuk danışmanlarımıza kadar; planlanmış bir ön görüşme için uygun bir zaman ayarlayabiliriz.</p>
+          <div style="margin-top: 36px; padding: 28px; background: var(--c-card); border: 1px solid var(--c-rule);">
+            <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; color: var(--c-muted); text-transform: uppercase;">İLETİŞİM</div>
+            <div style="margin-top: 14px; font-size: 16px; line-height: 1.7;">
+              Adatepe Mah. 1250 A Grubu<br>
+              Küme Evleri No:1/1<br>
+              Buca / İzmir<br><br>
+              <a href="tel:+905359762022" style="color: var(--c-accent);">+90 535 976 20 22</a><br>
+              <a href="mailto:info@izgenc.com" style="color: var(--c-accent);">info@izgenc.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<style>
+.about-banner {
+  position: relative;
+  height: 805px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--c-ink);
+}
+.about-banner > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.about-banner-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(31,36,38,0.9) 0%, rgba(31,36,38,0.35) 60%, rgba(31,36,38,0.5) 100%);
+}
+.about-banner-text { position: relative; z-index: 2; width: 100%; padding: 120px 0 64px; color: #FFFDF8; }
+.about-banner-text .breadcrumb { color: rgba(255,253,248,0.7); padding-top: 0; margin-bottom: 28px; }
+.about-banner-text .breadcrumb a { color: rgba(255,253,248,0.82); }
+.about-banner-text .breadcrumb .sep { color: rgba(255,253,248,0.4); }
+.about-banner-text h1 { color: #FFFDF8; max-width: 18ch; }
+.about-banner-text h1 em { color: var(--c-accent-2); font-style: italic; font-weight: 300; }
+.about-banner-text .lede { margin-top: 22px; color: rgba(255,253,248,0.85); max-width: 60ch; font-size: 18px; line-height: 1.6; }
+
+@media (max-width: 960px) {
+  .about-banner { min-height: 56vh; }
+  .about-banner-text { padding: 110px 0 48px; }
+  .storygrid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .storygrid aside { position: static !important; }
+  .vmgrid { grid-template-columns: 1fr !important; }
+  .vmgrid > div { padding: 36px 0 !important; border-right: 0 !important; }
+  .vmgrid > div:first-child { border-bottom: 1px solid var(--c-rule); }
+  .vmgrid > div:last-child { padding-bottom: 0 !important; }
+  .officegrid { grid-template-columns: 1fr !important; gap: 32px !important; }
+}
+</style>
+
+<script src="../assets/page.js"></script>
+<script>window.IzgencMount("about");</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="../assets/history.js"></script>
+</body>
+</html>
