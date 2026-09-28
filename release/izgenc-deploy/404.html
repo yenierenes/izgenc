@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <link rel="icon" href="assets/logo.png">
+  <title>Sayfa Bulunamadı — İzgenç Yapı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,0..100&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-screen-label="14 404">
+
+<main>
+  <section style="min-height: calc(100vh - 78px); display: flex; align-items: center; padding: 80px 0;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;" class="ffgrid">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-accent);">HATA 404</div>
+          <h1 style="margin-top: 28px; font-size: clamp(56px, 8vw, 120px); line-height: 0.95;">
+            Bu parselde <em style="color: var(--c-accent); font-style: italic;">yapı</em>
+            <br>bulunamadı.
+          </h1>
+          <p style="margin-top: 28px; font-size: 18px; color: var(--c-ink-2); max-width: 50ch; line-height: 1.6;">Aradığınız sayfa taşınmış ya da hiç imara açılmamış olabilir. URL'i kontrol edin veya aşağıdaki kısayollardan ilerleyin; bulamazsanız doğrudan bizi arayın.</p>
+
+          <div style="margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="index.html" class="btn btn-primary btn-lg">Ana Sayfaya Dön <span class="arr">→</span></a>
+            <a href="iletisim.html" class="btn btn-outline btn-lg">İletişime Geç</a>
+          </div>
+
+          <div class="quick-links" style="margin-top: 56px;">
+            <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--c-muted); margin-bottom: 16px;">Kısa Yollar</div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column;">
+              <li><a href="projeler.html" class="ql">Projeler <span class="arr">→</span></a></li>
+              <li><a href="hizmetler-kat-karsiligi.html" class="ql">Kat Karşılığı İnşaat <span class="arr">→</span></a></li>
+              <li><a href="hakkimizda.html" class="ql">Hakkımızda <span class="arr">→</span></a></li>
+              <li><a href="iletisim.html" class="ql">İletişim <span class="arr">→</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ff-visual">
+          <div class="lot-404" aria-hidden="true">
+            <span>4</span>
+            <span class="lot">
+              <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                <rect x="30" y="30" width="160" height="160" fill="none" stroke="rgba(58,53,47,0.45)" stroke-width="1.6" stroke-dasharray="7 7"/>
+                <g stroke="rgba(58,53,47,0.18)" stroke-width="1">
+                  <line x1="30" y1="110" x2="190" y2="110"/>
+                  <line x1="110" y1="30" x2="110" y2="190"/>
+                </g>
+                <g stroke="var(--c-accent)" stroke-width="2.2" fill="none">
+                  <path d="M30,46 L30,30 L46,30"/>
+                  <path d="M174,30 L190,30 L190,46"/>
+                  <path d="M190,174 L190,190 L174,190"/>
+                  <path d="M46,190 L30,190 L30,174"/>
+                </g>
+                <path d="M110,134 C102,123 96,115 96,107 A14,14 0 0 1 124,107 C124,115 118,123 110,134 Z" fill="none" stroke="rgba(31,36,38,0.8)" stroke-width="1.8"/>
+                <circle cx="110" cy="107" r="4.5" fill="var(--c-accent)"/>
+                <g stroke="rgba(58,53,47,0.5)" stroke-width="1.1">
+                  <line x1="30" y1="204" x2="98" y2="204"/>
+                  <line x1="122" y1="204" x2="190" y2="204"/>
+                  <line x1="30" y1="199" x2="30" y2="209"/>
+                  <line x1="190" y1="199" x2="190" y2="209"/>
+                </g>
+                <text x="110" y="208" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="var(--c-accent)">?</text>
+              </svg>
+            </span>
+            <span>4</span>
+          </div>
+          <div class="lot-caption">
+            <span class="dot"></span>
+            <span>İZGENÇ YAPI · PARSEL KAYDI YOK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<style>
+.quick-links li { border-bottom: 1px solid var(--c-rule); }
+.ql {
+  padding: 16px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+  transition: padding 200ms var(--ease), color 200ms var(--ease);
+}
+.ql:hover { padding-inline: 12px; color: var(--c-accent); }
+.ql .arr { transition: transform 220ms var(--ease); }
+.ql:hover .arr { transform: translateX(4px); }
+
+@media (max-width: 960px) {
+  .ffgrid { grid-template-columns: 1fr !important; gap: 40px !important; }
+}
+</style>
+
+<script src="assets/page.js"></script>
+<script>window.IzgencMount("");</script>
+</body>
+</html>
